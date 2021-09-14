@@ -1,0 +1,10 @@
+#sidebar {
+    background-color: aquamarine;
+    height: 85%;
+    width: 15%;
+    left: 0%;
+    top: 15%;
+    position: fixed;
+    text-align: center;
+  }
+  

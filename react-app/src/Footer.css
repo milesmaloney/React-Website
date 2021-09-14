@@ -1,0 +1,9 @@
+#footer {
+    background-color: grey;
+    height: 20%;
+    width: 85%;
+    bottom: -10%;
+    left: 15%;
+    position: absolute;
+    text-align: center;
+  }

@@ -1,0 +1,10 @@
+#header {
+    display: block;
+    background-color: rebeccapurple;
+    height: 15%;
+    width: 100%;
+    top: 0%;
+    position: fixed;
+    text-align: center;
+    z-index: 1;
+}
