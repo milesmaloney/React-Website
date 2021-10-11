@@ -8,6 +8,8 @@ export default class LocalClock extends React.Component {
     constructor(props) {
         super(props);
         this.state = { date: new Date(), timeOrDate : 'time' };
+        this.changeToDate = this.changeToDate.bind(this);
+        this.changeToTime = this.changeToTime.bind(this);
     }
 
     //render mounts the component to the web app
@@ -20,7 +22,7 @@ export default class LocalClock extends React.Component {
             shownClock = "The date today is " + this.state.date.toLocaleDateString();
         }
         return (
-            <h1>{shownClock}</h1>
+            <h1 onClick = {this.state.timeOrDate === 'time' ? this.changeToDate : this.changeToTime}>{shownClock}</h1>
         );
     }
 
@@ -44,17 +46,19 @@ export default class LocalClock extends React.Component {
     //componentWillUnmount handles what should be done when the component is unmounted
     componentWillUnmount() {
         clearInterval(this.timeIntervalID);
-        clearInterval(this.clockIntervalID);
+        clearTimeout(this.clockIntervalID);
     }
 
     //returns the time interval to be used on state change (5 seconds for date, 10 seconds for time)
     changeToTime() {
+        clearTimeout(this.clockIntervalID);
         this.setState({ timeOrDate: 'time' });
-        setTimeout(this.changeToDate.bind(this), 10000);
+        this.clockIntervalID = setTimeout(this.changeToDate.bind(this), 10000);
     }
     changeToDate() {
+        clearTimeout(this.clockIntervalID);
         this.setState({ timeOrDate: 'date'});
-        setTimeout(this.changeToTime.bind(this), 5000);
+        this.clockIntervalID = setTimeout(this.changeToTime.bind(this), 5000);
     }
 }
 

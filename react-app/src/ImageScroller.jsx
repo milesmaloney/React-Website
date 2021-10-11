@@ -14,7 +14,7 @@ export default class ImageScroller extends React.Component {
 */
 /*import-style:*/
         this.state = { currentPicture: img0};
-
+        this.changeImage = this.changeImage.bind(this);
     }
 
     render() {
@@ -30,7 +30,7 @@ export default class ImageScroller extends React.Component {
 
         var style = {backgroundImage: `url(${this.state.currentPicture})`, backgroundSize: "contain", backgroundRepeat: "no-repeat", backgroundPosition: "center"};
         return (
-            <div id = 'ImageScroller' style = {style} onClick = {this.changeImage.bind(this)}>
+            <div id = 'ImageScroller' style = {style} onClick = {this.changeImage}>
             </div>
         );
 

@@ -9,149 +9,54 @@ import ImageScroller from './ImageScroller.jsx';
 export default class Page extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {};
+        this.state = {pageType: this.props.pageType};
+        this.changeState = this.changeState.bind(this);
     }
     render() {
-        /*Header exists*/
-        if(this.props.contentType[0]) {
-            /*Sidebar and Header exist*/
-            if(this.props.contentType[1]) {
-                /*Sidebar, header, and footer exist*/
-                if(this.props.contentType[2]) {
-                    return (
-                        <div id = "page">
-                            <Header divs = {[1, 1, 1]} content = {[<ImageScroller />, <h1>Hey there!</h1>, <ImageScroller/>]}/>
-                            <Sidebar content = {[(
-                            <ul>
-                                <li><a href = "https://www.linkedin.com/in/miles-maloney-0783051b9/">LinkedIn</a></li>
-                                <li><a href = "https://github.com/milesmaloney">Github</a></li>
-                                <li>About Me</li>
-                            </ul>
-                            )]}/>
-                            <div id = "main">
-                                <ImageScroller />
-                            </div>
-                            <Footer divs = {[1, 1, 1]} content = {[<LocalClock/>, <h1>Hi there! It's me! The middle content!</h1>, <ImageScroller/>]}/>
-                        </div>
-                    );
-                }
-                /*Header and sidebar exist, no footer*/
-                else {
-                    var mainStyle = {top: '15%', left: '15%', height: '85%', width: '85%'};
-                    var headerStyle = {top: '0%', left: '0%', height: '15%', width: '100%'};
-                    var sidebarStyle = {top: '15%', left: '0%', height: '85%', width: '15%'};
-                    return (
-                        <div id = "page">
-                            <Header divs = {[1, 1, 1]} content = {[<ImageScroller />, <h1>Yo what up G? It's me! Middle guy!</h1>, <ImageScroller/>]} style = {headerStyle}/>
-                            <Sidebar content = {[(
-                            <ul>
-                                <li><a href = "https://www.linkedin.com/in/miles-maloney-0783051b9/">LinkedIn</a></li>
-                                <li><a href = "https://github.com/milesmaloney">Github</a></li>
-                                <li>About Me</li>
-                            </ul>
-                            )]} style = {sidebarStyle}/>
-                            <div id = "main" style = {mainStyle}>
-                                <ImageScroller />
-                            </div>
-                        </div>
-                    )
-                }
-            }
-            /*Header and footer exist, no sidebar*/
-            else if(this.props.contentType[2]) {
-                var mainStyle = {top: '15%', left: '0%', height: '75%', width: '100%'};
-                var headerStyle = {top: '0%', left: '0%', height: '15%', width: '100%'};
-                var footerStyle = {bottom: '-10%', left: '0%', height: '20%', width: '100%'};
-                return (
-                    <div id = "page">
-                        <Header divs = {[1, 1, 1]} content = {[<ImageScroller />, <h1>Yo what up G? It's me! Middle guy!</h1>, <ImageScroller/>]} style = {headerStyle}/>
-                        <div id = "main" style = {mainStyle}>
-                            <ImageScroller />
-                        </div>
-                        <Footer divs = {[1, 1, 1]} content = {[<LocalClock/>, <h1>Hi there! It's me! The middle content!</h1>, <ImageScroller/>]} style = {footerStyle}/>
-                    </div>
-                );
-            }
-            /*Only header exists*/
-            else {
-                var mainStyle = {top: '15%', left: '0%', height: '85%', width: '100%'};
-                var headerStyle = {top: '0%', left: '0%', height: '15%', width: '100%'};
-                return (
-                    <div id = "page">
-                        <Header divs = {[1 , 1, 1]} content = {[<ImageScroller />, <h1>It's me! Middle guy!</h1>, <ImageScroller/>]} style = {headerStyle}/>
-                        <div id = "main" style = {mainStyle}>
-                            <ImageScroller />
-                        </div>
-                    </div>
-                );
-            }
-        }
-        /*Sidebar exists, no header*/
-        else if(this.props.contentType[1]) {
-            /*Sidebar and footer exist, no header*/
-            if(this.props.contentType[2]) {
-                var mainStyle = {top: '0%', left: '15%', height: '90%', width: '85%'};
-                var sidebarStyle = {top: '0%', left: '0%', height: '100%', width: '15%'};
-                var footerStyle = {bottom: '-10%', left: '15%', height: '20%', width: '85%'};
-                return (
-                    <div id = "page">
-                        <Sidebar content = {[(
-                            <ul>
-                                <li><a href = "https://www.linkedin.com/in/miles-maloney-0783051b9/">LinkedIn</a></li>
-                                <li><a href = "https://github.com/milesmaloney">Github</a></li>
-                                <li>About Me</li>
-                            </ul>
-                            )]} style = {sidebarStyle}/>
-                        <div id = "main" style = {mainStyle}>
-                            <ImageScroller />
-                        </div>
-                        <Footer divs = {[1, 1, 1]} content = {[<LocalClock/>, <h1>Hi there! It's me! The middle content!</h1>, <ImageScroller/>]} style = {footerStyle}/>
-                    </div>
-                );
-            }
-            /*Only sidebar exists*/
-            else {
-                var mainStyle = {left: '15%', top: '0%', width: '85%', height: '100%'};
-                var sidebarStyle = {left: '0%', top: '0%', width: '15%', height: '100%'};
-                return (
-                    <div id = "page">
-                        <Sidebar content = {[(
-                            <ul>
-                                <li><a href = "https://www.linkedin.com/in/miles-maloney-0783051b9/">LinkedIn</a></li>
-                                <li><a href = "https://github.com/milesmaloney">Github</a></li>
-                                <li>About Me</li>
-                            </ul>
-                            )]} style = {sidebarStyle}/>
-                        <div id = "main" style = {mainStyle}>
-                            <ImageScroller />
-                        </div>
-                    </div>
-                );
-            }
-        }
-        /*Only footer exists*/
-        else if(this.props.contentType[2]) {
-            var mainStyle = {left: '0%', top: '0%', height: '90%', width: '100%'};
-            var footerStyle = {left: '0%', bottom: '-10%', height: '20%', width: '100%'};
+        if(this.state.pageType === 'home') {
+            var mainStyle = {left: '25%', top: '10%', width: '75%', height: '90%'};
+            var sidebarStyle = {left: '0%', top: '10%', width: '25%', height: '90%'};
+            var headerStyle = {left: '0%', top: '0%', width: '100%', height: '10%'};
             return (
                 <div id = "page">
+                    <Header divs = {[1,1,0]} content = {[<LocalClock/>, <h1>Miles Maloney</h1>]} style = {headerStyle}/>
+                    <Sidebar content = {[
+                        <a href = "https://www.linkedin.com/in/miles-maloney-0783051b9/">LinkedIn</a>,
+                        <a href = "https://github.com/milesmaloney">Github</a>,
+                        <h1 onClick = {() => this.changeState('about me')}>About Me</h1>
+                    ]} style = {sidebarStyle}/>
                     <div id = "main" style = {mainStyle}>
-                        <ImageScroller />
+                        <ImageScroller/>
                     </div>
-                    <Footer divs = {[1, 1, 1]} content = {[<LocalClock/>, <h1>Hi there!</h1>, <ImageScroller/>]} style = {footerStyle}/>
                 </div>
             );
         }
-        /*No header, sidebar, or footer*/
-        else {
-            var mainStyle = {left: '0%', top: '0%', height: '100%', width: '100%'};
+        else if(this.state.pageType === 'about me') {
+            var mainStyle = {left: '15%', top: '0%', width: '85%', height: '100%'};
+            var sidebarStyle = {left: '0%', top: '0%', width: '15%', height: '100%'};
             return (
                 <div id = "page">
+                    <Sidebar content = {[
+                        <h1 onClick = {() => this.changeState('home')}>Home</h1>,
+                        <a href = "https://www.linkedin.com/in/miles-maloney-0783051b9/">LinkedIn</a>,
+                        <a href = "https://github.com/milesmaloney">Github</a>
+                    ]} style = {sidebarStyle}/>
                     <div id = "main" style = {mainStyle}>
-                        <ImageScroller />
+                        <h1>Hello! My name is Miles Maloney, and I am a recent graduate of the B.S. Computer Science program at University of San Diego. This website is a hub for you to find everything you might want to learn about my background as a software engineer.</h1>
                     </div>
-                </div>   
+                </div>
             );
+        }
+    }
+    changeState(newState) {
+        console.log("Statechange!");
+        switch(newState) {
+            case 'home':
+                this.setState({pageType: 'home'});
+                break;
+            case 'about me':
+                this.setState({pageType: 'about me'});
+                break;
         }
     }
 }

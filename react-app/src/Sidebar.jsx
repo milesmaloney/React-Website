@@ -8,9 +8,17 @@ export default class Sidebar extends React.Component {
     }
 
     render() {
+        var listElements = [];
+        var pcntPerElement = 100 / this.props.content.length;
+        for(var i = 0; i < this.props.content.length; i++) {
+            var currStyle = {top: `${(0 + (pcntPerElement * i)).toString()}%`, left: '0%', height: `${pcntPerElement.toString()}%`, width: '100%', position: 'absolute'};
+            listElements.push(<li style = {currStyle}>{this.props.content[i]}</li>);
+        }
         return (
             <div id = "sidebar" style = {this.props.style}>
-                {this.props.content[0]}
+                <ul>
+                    {listElements}
+                </ul>
             </div>
         );
     }
