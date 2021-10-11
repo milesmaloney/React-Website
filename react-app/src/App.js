@@ -20,7 +20,7 @@ TODO:
 function App() {
   return (
     <div id = "App">
-      <Page contentType = {[1, 1, 1]}/>
+      <Page pageType = 'home'/>
     </div>
   )
 /*Commented out this return statement to test page react component
