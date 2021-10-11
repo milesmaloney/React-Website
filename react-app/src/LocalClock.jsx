@@ -22,7 +22,7 @@ export default class LocalClock extends React.Component {
             shownClock = "The date today is " + this.state.date.toLocaleDateString();
         }
         return (
-            <h1 onClick = {this.state.timeOrDate === 'time' ? this.changeToDate : this.changeToTime}>{shownClock}</h1>
+            <h2 onClick = {this.state.timeOrDate === 'time' ? this.changeToDate : this.changeToTime}>{shownClock}</h2>
         );
     }
 

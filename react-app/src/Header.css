@@ -1,10 +1,45 @@
 #header {
     display: block;
-    background-color: rebeccapurple;
+    background-image: url('https://d2gg9evh47fn9z.cloudfront.net/800px_COLOURBOX4549221.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
     height: 15%;
     width: 100%;
     top: 0%;
     position: fixed;
     text-align: center;
     z-index: 1;
+    outline-style: groove;
+    outline-color: darkorchid;
+}
+
+#headerLeft {
+    background-color: rgba(102, 51, 153, 0.66);
+}
+
+#headerMid {
+    background-color: rgba(102, 51, 153, 0.66);
+}
+
+#headerRight {
+    background-color: rgba(102, 51, 153, 0.66);
+}
+
+h1 {
+    padding: 0px;
+    margin: 0px;
+    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    color: aqua;
+    font-size: 75px;
+}
+
+h2 {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    padding: 0px;
+    margin: 0px;
+    font-family:'Times New Roman', Times, serif;
+    color: orange;
+    font-size: 25px;
 }
