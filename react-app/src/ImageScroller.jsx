@@ -1,8 +1,8 @@
 import React from 'react';
 import './ImageScroller.css';
-import img0 from './Assets/img0.jpg';
-import img1 from './Assets/img1.jpg';
-import img2 from './Assets/img2.jpg';
+import img0 from './NewAssets/img0.jpg';
+import img1 from './NewAssets/img1.jpg';
+import img2 from './NewAssets/img2.jpg';
 
 /*NOTE: Require-style code does not work properly; keep import-style code, and add any new images to import list and changeImage() 
 switch case*/
@@ -28,7 +28,7 @@ export default class ImageScroller extends React.Component {
 */
 /*import-style:*/
 
-        var style = {backgroundImage: `url(${this.state.currentPicture})`, backgroundSize: "contain", backgroundRepeat: "no-repeat", backgroundPosition: "center"};
+        var style = {backgroundImage: `url(${this.state.currentPicture})`, backgroundSize: "cover", backgroundRepeat: "no-repeat", backgroundPosition: "center"};
         return (
             <div id = 'ImageScroller' style = {style} onClick = {this.changeImage}>
             </div>
