@@ -6,49 +6,6 @@
 
 
 
-
-/*
-#header {
-  display: block;
-  background-color: rebeccapurple;
-  height: 15%;
-  width: 100%;
-  top: 0%;
-  position: fixed;
-  text-align: center;
-  z-index: 1;
-}
-
-
-
-#headerLeft {
-  background-color: forestgreen;
-  height: 100%;
-  width: 30%;
-  left: 0%;
-  position: absolute;
-}
-
-#headerMiddle {
-  height: 100%;
-  width: 40%;
-  left: 30%;
-  position: absolute;
-}
-
-#headerRight {
-  background-color: ivory;
-  height: 100%;
-  width: 30%;
-  right: 0%;
-  position: absolute;
-  text-align: center;
-  vertical-align: center;
-}
-*/
-
-
-
 #main {
   height: 75%;
   width: 85%;
@@ -58,6 +15,7 @@
   position: absolute;
   text-align: center;
   vertical-align: center;
+  margin: 0%;
 }
 
 
@@ -71,7 +29,6 @@
 
 
 #mainTopLeft {
-  background-color: pink;
   height: 100%;
   width: 50%;
   left: 0%;
@@ -79,7 +36,6 @@
 }
 
 #mainTopRight {
-  background-color:cadetblue;
   height: 100%;
   width: 50%;
   right: 0%;
@@ -97,7 +53,6 @@
 
 
 #mainCenterLeft {
-  /*background-color:chartreuse;*/
   height: 100%;
   width: 50%;
   left: 0%;
@@ -105,7 +60,6 @@
 }
 
 #mainCenterRight {
-  background-color: darkblue;
   height: 100%;
   width: 50%;
   right: 0%;
@@ -123,7 +77,6 @@
 
 
 #mainBottomLeft {
-  /*background-color:fuchsia ;*/
   height: 100%;
   width: 50%;
   left: 0%;
@@ -137,50 +90,3 @@
   right: 0%;
   position: absolute;
 }
-
-
-
-
-/*
-#sidebar {
-  background-color: aquamarine;
-  height: 85%;
-  width: 15%;
-  left: 0%;
-  top: 15%;
-  position: fixed;
-  text-align: center;
-}
-
-
-
-#sidebarMain {
-  height: 88%;
-  width: 100%;
-  left: 0%;
-  top: 0%;
-  position: absolute;
-}
-
-#sidebarBottom {
-  background-color: brown;
-  height: 12%;
-  width: 100%;
-  left: 0%;
-  bottom: 0%;
-  position: absolute;
-}
-
-
-
-
-#footer {
-  background-color: grey;
-  height: 10%;
-  width: 85%;
-  bottom: 0%;
-  left: 15%;
-  position: absolute;
-  text-align: center;
-}
-*/

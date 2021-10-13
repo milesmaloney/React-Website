@@ -1,0 +1,35 @@
+#projectEntry {
+    background-color:rgba(0, 0, 0, 0.33);
+    height: 100%;
+    width: 100%;
+}
+
+#title {
+    height: 10%;
+    width: 100%;
+    top: 0%;
+    left: 0%;
+}
+
+#projectEntry > li {
+    padding: 0%;
+}
+
+#title > a {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 20px;
+}
+
+#title > a:link {
+    color: chartreuse;
+}
+
+#title > a:visited {
+    color: white;
+}
+
+
+#description > h3 {
+    font-size: 1.5rem;
+    color:azure;
+}

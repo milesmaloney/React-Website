@@ -25,7 +25,7 @@
     background-color: rgba(102, 51, 153, 0.66);
 }
 
-h1 {
+#headerMid > h1 {
     padding: 0px;
     margin: 0px;
     font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
@@ -33,7 +33,7 @@ h1 {
     font-size: 75px;
 }
 
-h2 {
+#headerLeft > h2 {
     display: flex;
     align-items: center;
     justify-content: left;
