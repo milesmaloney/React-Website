@@ -8,15 +8,18 @@ export default class Header extends React.Component {
     }
 
     render() {
+        var leftStyle = {};
+        var midStyle = {};
+        var rightStyle = {};
         /*Header contains a left div*/
         if(this.props.divs[0]) {
             /*Header contains a left and middle div*/
             if(this.props.divs[1]) {
                 /*Header contains a left, middle, and right div*/
                 if(this.props.divs[2]) {
-                    var leftStyle = {left: '0%', width: '33%', height: '100%', position: 'absolute'};
-                    var midStyle = {left: '33%', width: '34%', height: '100%', position: 'absolute'};
-                    var rightStyle = {left: '67%', width: '33%', height: '100%', position: 'absolute'};
+                    leftStyle = {left: '0%', width: '33%', height: '100%', position: 'absolute'};
+                    midStyle = {left: '33%', width: '34%', height: '100%', position: 'absolute'};
+                    rightStyle = {left: '67%', width: '33%', height: '100%', position: 'absolute'};
                     return (
                         <div id = "header" style = {this.props.style}>
                             <div id = "headerLeft" style = {leftStyle}>
@@ -33,8 +36,8 @@ export default class Header extends React.Component {
                 }
                 /*Header contains only a left and middle div (left corner and single mid-right section)*/
                 else {
-                    var leftStyle = {left: '0%', width: '33%', height: '100%', position: 'absolute'}
-                    var midStyle = {left: '33%', width: '67%', height: '100%', position: 'absolute'}
+                    leftStyle = {left: '0%', width: '33%', height: '100%', position: 'absolute'}
+                    midStyle = {left: '33%', width: '67%', height: '100%', position: 'absolute'}
                     return (
                         <div id = "header" style = {this.props.style}>
                             <div id = "headerLeft" style = {leftStyle}>
@@ -49,8 +52,8 @@ export default class Header extends React.Component {
             }
             /*Header contains only a left and right div (header divided between the two divs)*/
             else if(this.props.divs[2]) {
-                var leftStyle = {left: '0%', width: '50%', height: '100%', position: 'absolute'};
-                var rightStyle = {left: '50%', width: '50%', height: '100%', position: 'absolute'};
+                leftStyle = {left: '0%', width: '50%', height: '100%', position: 'absolute'};
+                rightStyle = {left: '50%', width: '50%', height: '100%', position: 'absolute'};
                 return (
                     <div id = "header" style = {this.props.style}>
                         <div id = "headerLeft" style = {leftStyle}>
@@ -70,8 +73,8 @@ export default class Header extends React.Component {
         else if(this.props.divs[1]) {
             /*Header contains only a middle and right div (right corner and single left-mid section)*/
             if(this.props.divs[2]) {
-                var midStyle = {left: '0%', width: '67%', height: '100%', position: 'absolute'}
-                var rightStyle = {left: '67%', width: '33%', height: '100%', position: 'absolute'}
+                midStyle = {left: '0%', width: '67%', height: '100%', position: 'absolute'}
+                rightStyle = {left: '67%', width: '33%', height: '100%', position: 'absolute'}
                 return (
                     <div id = "header" style = {this.props.style}>
                         <div id = "headerMid" style = {midStyle}>

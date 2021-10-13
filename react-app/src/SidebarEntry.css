@@ -8,11 +8,19 @@
     transition: box-shadow 180ms ease-in;
 }
 
-a {
+#sidebarEntry > a {
     font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-weight: normal;
     font-size: 40px;
     color: whitesmoke;
+}
+
+#sidebarEntry > a:link {
+    color: whitesmoke;
+}
+
+#sidebarEntry > a:visited {
+    color: darkgray;
 }
 
 #sidebarEntry:hover {

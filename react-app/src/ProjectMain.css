@@ -1,0 +1,16 @@
+#projectMain {
+    position: absolute;
+    background-color: rgba(128, 0, 256, 0.35);
+    height: 100%;
+    width: 100%;
+}
+
+#projectMain > ul {
+    position: absolute;
+    margin: 0%;
+    padding: 0%;
+    left: 0%;
+    width: 100%;
+    height: 100%;
+    list-style-type: none;
+}
