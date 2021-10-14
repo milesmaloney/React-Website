@@ -34,7 +34,7 @@ export default class Page extends React.Component {
                     <Header divs = {[1,1,0]} content = {[<LocalClock/>, <h1 onClick = {() => this.changeState('about me')}>Miles Maloney</h1>]} style = {headerStyle}/>
                     <Sidebar content = {sidebarContent} style = {sidebarStyle}/>
                     <div id = "main" style = {mainStyle}>
-                        <ImageScroller/>
+                        <ImageScroller shuffle = {0}/>
                     </div>
                 </div>
             );

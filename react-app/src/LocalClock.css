@@ -1,0 +1,75 @@
+#clock {
+    height: 100%;
+    width: 100%;
+}
+
+#clock > h1 {
+    color: white;
+}
+
+#digits {
+
+    height: 100%;
+    width: 100%;
+}
+
+#digitOne > h4 { 
+    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 3.75rem;
+    color: white;
+    margin: 0%;
+}
+#digitTwo > h4 { 
+    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 3.75rem;
+    color: white;
+    margin: 0%;
+}
+#digitThree > h4 { 
+    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 3.75rem;
+    color: white;
+    margin: 0%;
+}
+#digitFour > h4 { 
+    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 3.75rem;
+    color: white;
+    margin: 0%;
+}
+#digitFive > h4 { 
+    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 3.75rem;
+    color: white;
+    margin: 0%;
+}
+#digitSix > h4 { 
+    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 3.75rem;
+    color: white;
+    margin: 0%;
+}
+#digitSeven > h4 { 
+    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 3.75rem;
+    color: white;
+    margin: 0%;
+}
+#digitEight > h4 { 
+    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 3.75rem;
+    color: white;
+    margin: 0%;
+}
+#digitNine > h4 { 
+    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 3.75rem;
+    color: white;
+    margin: 0%;
+}
+#digitTen > h4 { 
+    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 3.75rem;
+    color: white;
+    margin: 0%;
+}

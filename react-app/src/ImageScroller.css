@@ -8,19 +8,24 @@
     width: 5%;
     top: 0%;
     left: 100%;
+    outline-style: outset;
+    outline-color: grey;
 }
 
 #shuffleTexture {
     margin: 0%;
     height: 100%;
     width: 100%;
+    outline-style: inset;
+    outline-color: whitesmoke;
 }
 
 #shuffleTexture > h1 {
+    font-size: 18px;
     height: 100%;
     width: 100%;
-    margin: 0%;
-    padding: 0%;
-    display: table-cell;
-    vertical-align: middle;
+    margin:0%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
