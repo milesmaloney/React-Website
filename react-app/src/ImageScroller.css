@@ -2,3 +2,25 @@
     height: 100%;
     width: 100%;
 }
+
+#shuffleButton {
+    height: 5%;
+    width: 5%;
+    top: 0%;
+    left: 100%;
+}
+
+#shuffleTexture {
+    margin: 0%;
+    height: 100%;
+    width: 100%;
+}
+
+#shuffleTexture > h1 {
+    height: 100%;
+    width: 100%;
+    margin: 0%;
+    padding: 0%;
+    display: table-cell;
+    vertical-align: middle;
+}
