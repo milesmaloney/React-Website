@@ -10,19 +10,19 @@
     text-align: center;
     z-index: 1;
     outline-style: groove;
-    outline-color: darkorchid;
+    outline-color: rgb(196,196,256);
 }
 
 #headerLeft {
-    background-color: rgba(102, 51, 153, 0.66);
+    background-color: rgba(0, 0, 60, 0.66);
 }
 
 #headerMid {
-    background-color: rgba(102, 51, 153, 0.66);
+    background-color: rgba(0, 0, 60, 0.66);
 }
 
 #headerRight {
-    background-color: rgba(102, 51, 153, 0.66);
+    background-color: rgba(0, 0, 60, 0.66);
 }
 
 #headerMid > h1 {

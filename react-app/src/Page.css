@@ -7,13 +7,14 @@
     overflow: auto;
 }
 
+#main > p {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 40px;
+    color:gold;
+    background-color: rgba(0, 0, 0, 0.40);
+}
+
 a > h3 {
     font-size: 40px;
     font-weight: normal;
-}
-
-p {
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    font-size: 50px;
-    color:gold;
 }
