@@ -1,12 +1,35 @@
 import React from 'react';
 import './ProjectEntry.css';
 
+/*This react component contains all necessary formatting and styling for a projectEntry in the projects page*/
 export default class ProjectEntry extends React.Component {
+    /*
+    Props:
+        Title:
+            The title of the project
+        srcLink:
+            A link to the source code of the project (usually a github repo)
+        Description:
+            A brief description of the project
+        Image:
+            An optional image to be added to the project entry
+        Demo:
+            An optional demo to be added to the project entry
+    States:
+        None: This component uses props to decide the content of the project and formats based on what optional content is present
+    */
     constructor(props) {
         super(props);
         this.state = {};
     }
 
+    /*
+    render() adjusts styles based on the page being displayed and renders the page accordingly
+    Parameters:
+        None; Uses the title, description, image, and demo props to decide what the format and content should look like
+    Returns:
+        None; renders the content within the web browser
+    */
     render() {
         var imageStyle = {height: '0%', width: '0%'};
         var descriptionStyle = {height: '0%', width: '0%'};

@@ -1,12 +1,27 @@
 import React from 'react';
 import './Header.css';
 
+/*This react componenet holds the different possible formats of a header and its relevant methods*/
 export default class Header extends React.Component {
+    /*
+    Props:
+        Divs: A boolean array representing the divs that are to be filled in the header (in format [leftDiv, middleDiv, rightDiv])
+        Content: The content meant to fill the divs (in format [leftContent, midContent, rightContent], or simply left-to-right if not all divs are filled)
+    States:
+        None; This component only uses the props passed to it to determine its content, it does not change dynamically
+    */
     constructor(props) {
         super(props);
         this.state = {};
     }
 
+    /*
+    render() adjusts styles based on the page being displayed and renders the page accordingly
+    Parameters:
+        None; Uses the divs prop to indicate format and the content prop to indicate what should be displayed
+    Returns:
+        None; renders the content within the web browser
+    */
     render() {
         var leftStyle = {};
         var midStyle = {};
@@ -65,9 +80,7 @@ export default class Header extends React.Component {
                     </div>
                 );
             }
-            
             /*Else header contains only a left div (This is handled by the base case. One div will span the entire header regardless) */
-
         }
         /*Header contains a middle div. Header does not contain a left div*/
         else if(this.props.divs[1]) {
@@ -90,7 +103,6 @@ export default class Header extends React.Component {
         }
 
         /*Else header contains only a right div (This is handled by the base case) */
-    
         /*Base Case: Either no extra divs or only one (Would span the entire header) */
         else {
             return (

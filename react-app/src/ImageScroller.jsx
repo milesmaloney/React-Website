@@ -10,6 +10,13 @@ import img6 from './Assets/img6.jpg';
 
 
 export default class ImageScroller extends React.Component {
+    /*
+    Props:
+        Shuffle: Decides whether or not the ImageScroller starts in shuffle mode
+    States:
+        Shuffle: Maintains whether or not the ImageScroller is scrolling through images sequentially or randomly
+        currentPicture: Maintains which picture is currently being displayed
+    */
     constructor(props) {
         super(props);
         this.state = { currentPicture: img0, shuffle: this.props.shuffle};
@@ -17,9 +24,16 @@ export default class ImageScroller extends React.Component {
         this.toggleShuffle = this.toggleShuffle.bind(this);
     }
 
+    /*
+    render() adjusts styles based on the page being displayed and renders the page accordingly
+    Parameters:
+        None; Uses the currentPicture and shuffle states to decide the style the ImageScroller should take and the image to be displayed
+    Returns:
+        None; renders the content within the web browser
+    */
     render() {
         var scrollerStyle = {backgroundImage: `url(${this.state.currentPicture})`, backgroundSize: "cover", backgroundRepeat: "no-repeat", backgroundPosition: "center"};
-        var shuffleStyle = {backgroundImage: `url(${'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSXaQf9Veq0jYowgDiQ_X9IUhw7imnG5q8McA&usqp=CAU'})`, backgroundSize: "cover", backgroundPosition: "center"};
+        var shuffleStyle = {backgroundImage: `url(${'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSXaQf9Veq0jYowgDiQ_X9IUhw7imnG5q8McA&usqp=CAU'})`, backgroundSize: "cover", backgroundRepeat: "no-repeat", backgroundPosition: "center"};
         var shuffleDiv = <div></div>;
         if(!this.state.shuffle) {
             var shuffleTexture = {backgroundColor: 'rgba(0,0,0,0.5)', zIndex: '2', color: 'rgba(256, 256, 256, 0.5)'};
@@ -35,15 +49,24 @@ export default class ImageScroller extends React.Component {
 
     }
 
+    /*This function describes what the component should do once it is rendered*/
     componentDidMount() {
-        this.setImageInterval();
+        this.imageIntervalID = setInterval(this.changeImage, 3000);
     }
 
+    /*This function describes what the component should do once it is unrendered*/
     componentWillUnmount() {
-        this.clearImageInterval();
+        clearInterval(this.imageIntervalID);
     }
 
-    //This function will change the image and reset the image change interval (handles onClick events)
+    /*
+    This function will change the image and reset the image change interval (handles onClick events)
+    Parameters:
+        None: Uses the shuffle and currentPicture states to decide whether or not the next image is chosen sequentially or random and what 
+        the next image will be
+    Returns:
+        None: Changes the currentPicture state to reflect the new image we want to display
+    */
     changeImage() {
         const possibleImages = [img0,img1,img2,img3,img4,img5,img6];
         var switchCase = this.state.currentPicture;
@@ -53,58 +76,52 @@ export default class ImageScroller extends React.Component {
         switch(switchCase) {
             case img0:
                 this.setState({ currentPicture: img1 }) ;
-                this.clearImageInterval();
-                this.setImageInterval();
+                clearInterval(this.imageIntervalID);
+                this.imageIntervalID = setInterval(this.changeImage, 3000);
                 break;
             case img1:
                 this.setState({ currentPicture: img2 });
-                this.clearImageInterval();
-                this.setImageInterval();
+                clearInterval(this.imageIntervalID);
+                this.imageIntervalID = setInterval(this.changeImage, 3000);
                 break;
             case img2:
                 this.setState({ currentPicture: img3 });
-                this.clearImageInterval();
-                this.setImageInterval();
+                clearInterval(this.imageIntervalID);
+                this.imageIntervalID = setInterval(this.changeImage, 3000);
                 break;
             case img3:
                 this.setState({ currentPicture: img4 });
-                this.clearImageInterval();
-                this.setImageInterval();
+                clearInterval(this.imageIntervalID);
+                this.imageIntervalID = setInterval(this.changeImage, 3000);
                 break;
             case img4:
                 this.setState({ currentPicture: img5 });
-                this.clearImageInterval();
-                this.setImageInterval();
+                clearInterval(this.imageIntervalID);
+                this.imageIntervalID = setInterval(this.changeImage, 3000);
                 break;            
             case img5:
                 this.setState({ currentPicture: img6 });
-                this.clearImageInterval();
-                this.setImageInterval();
+                clearInterval(this.imageIntervalID);
+                this.imageIntervalID = setInterval(this.changeImage, 3000);
                 break;            
             case img6:
                 this.setState({ currentPicture: img0 });
-                this.clearImageInterval();
-                this.setImageInterval();
+                clearInterval(this.imageIntervalID);
+                this.imageIntervalID = setInterval(this.changeImage, 3000);
                 break;
             default:
                 return;
         }
     }
 
+    /*
+    This function toggles the shuffle function of the ImageScroller on/off
+    Parameters:
+        None; uses the shuffle state to determine which shuffle state to change to
+    Returns:
+        None; changes shuffle state based on the current shuffle state
+    */
     toggleShuffle() {
-        if(this.state.shuffle) {
-            this.setState({shuffle: 0});
-        }
-        else {
-            this.setState({shuffle: 1});
-        }
-    }
-
-    setImageInterval() {
-        this.imageIntervalID = setInterval(this.changeImage.bind(this), 3000);
-    }
-
-    clearImageInterval() {
-        clearInterval(this.imageIntervalID);
+        this.state.shuffle ? this.setState({shuffle: 0}) : this.setState({shuffle: 1});
     }
 }

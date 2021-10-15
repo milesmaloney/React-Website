@@ -8,7 +8,7 @@
     top: 0%;
     position: fixed;
     text-align: center;
-    z-index: 1;
+    z-index: 2;
     outline-style: groove;
     outline-color: rgb(196,196,256);
 }
