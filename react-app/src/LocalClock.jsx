@@ -2,23 +2,29 @@ import React from 'react';
 import './LocalClock.css';
 
 
-//The LocalClock React component creates a clock that will switch between local time and date
+/*The LocalClock React component creates a clock that will switch between local time and date*/
 export default class LocalClock extends React.Component {
-    //constructor sets the initial states and props
+    /*constructor sets the initial states and props*/
     constructor(props) {
         super(props);
         this.state = { date: new Date(), timeOrDate : 'time'};
-        this.changeToDate = this.changeToDate.bind(this);
-        this.changeToTime = this.changeToTime.bind(this);
+        this.changeState = this.changeState.bind(this);
     }
 
-    //render mounts the component to the web app
+    /*
+    render() adjusts styles based on the page being displayed and renders the page accordingly
+    Parameters:
+        None; Uses the timeOrDate and date states to decide what to display and in what format
+    Returns:
+        None; renders the content within the web browser
+    */
     render() {
-        var shownDigits = [];
+        //Populates the digitStyles with positioning for each digit in relation to the others
         var digitStyles = [];
         for(var i = 0; i < 10; i++) {
-            digitStyles.push({top: '0%', left: `${0 + i * 7.5}%`, height: '100%', width: '7.5%', position: 'absolute'});
+            digitStyles.push({top: '15%', left: `${0 + i * 6}%`, height: '100%', width: '7.5%', position: 'absolute'});
         }
+        //Rounds out any single-digit values and adds leading 0's for consistency
         var digitPairs = (this.state.timeOrDate === 'time' ? this.state.date.toLocaleTimeString().replace(" ","").split(":") : this.state.date.toLocaleDateString().split("/"))
         for(var j = 0; j < digitPairs.length; j++) {
             if(digitPairs[j].length % 2 === 1) {
@@ -26,7 +32,7 @@ export default class LocalClock extends React.Component {
             }
         }
         //Gets the string in array format as opposed to divided digit pairs
-        shownDigits = digitPairs.join("").split("");
+        var shownDigits = digitPairs.join("").split("");
         return (
             <div id = "clock">
                 <div id = "digits">
@@ -65,7 +71,7 @@ export default class LocalClock extends React.Component {
         );
     }
 
-    //componentDidMount handles everything that needs to happen once the component is mounted
+    /*This function handles everything that needs to happen once the component is rendered*/
     componentDidMount() {
         //updates time every second
         this.timeIntervalID = setInterval(() => {
@@ -73,25 +79,31 @@ export default class LocalClock extends React.Component {
         }, 1000);
 
         //switches between time and date every specified interval (5 seconds of date : 10 seconds of time)
-        this.state.timeOrDate === 'time' ? this.changeToDate() : this.changeToTime();
+        this.changeState();
     }
 
-    //componentWillUnmount handles what should be done when the component is unmounted
+    /*This function handles what should be done when the component is unrendered*/
     componentWillUnmount() {
         clearInterval(this.timeIntervalID);
         clearInterval(this.transitionIntervalID);
         clearTimeout(this.clockIntervalID);
     }
 
-    //returns the time interval to be used on state change (5 seconds for date, 10 seconds for time)
-    changeToTime() {
+    /*
+    Parameters:
+        None; Only called to transition states
+    Returns:
+        None; changes the state to the complementary state and starts the corresponding timer
+    */
+    changeState() {
         clearTimeout(this.clockIntervalID);
-        this.setState({ timeOrDate: 'time' });
-        this.clockIntervalID = setTimeout(this.changeToDate, 10000);
-    }
-    changeToDate() {
-        clearTimeout(this.clockIntervalID);
-        this.setState({ timeOrDate: 'date'});
-        this.clockIntervalID = setTimeout(this.changeToTime, 5000);
+        if(this.state.timeOrDate === 'time') {
+            this.setState({ timeOrDate: 'date' });
+            this.clockIntervalID = setTimeout(this.changeState, 5000);
+        }
+        else {
+            this.setState({ timeOrDate: 'time' });
+            this.clockIntervalID = setTimeout(this.changeState, 10000);
+        }
     }
 }

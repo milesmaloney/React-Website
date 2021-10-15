@@ -1,12 +1,27 @@
 import React from 'react';
 import './Footer.css'
 
+/*This react component holds the necessary format and styling options for the Footer*/
 export default class Footer extends React.Component {
+    /*
+    Props:
+        Divs: A boolean array representing the divs that are to be filled in the footer (in format [leftDiv, middleDiv, rightDiv])
+        Content: The content meant to fill the divs (in format [leftContent, midContent, rightContent], or simply left-to-right if not all divs are filled)
+    States:
+        None; This component only uses the props passed to it to determine its content, it does not change dynamically
+    */
     constructor(props) {
         super(props);
         this.state = {};
     }
 
+        /*
+    render() adjusts styles based on the page being displayed and renders the page accordingly
+    Parameters:
+        None; Uses the divs prop to indicate format and the content prop to indicate what should be displayed
+    Returns:
+        None; renders the content within the web browser
+    */
     render() {
         var leftStyle = {};
         var midStyle = {};
