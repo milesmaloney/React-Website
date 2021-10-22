@@ -14,3 +14,25 @@
     height: 100%;
     list-style-type: none;
 }
+
+#projectMain > a {
+    top: 0%;
+    right: 0%;
+    height: 5%;
+    width: 3%;
+    z-index: 1;
+    position: absolute;
+    background-image: url('https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png');
+    background-size: contain;
+    background-repeat: none;
+    background-position: center;
+}
+
+a > #ghicon {
+    height: 100%;
+    width: 100%;
+    background-image: url('https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png');
+    background-size: cover;
+    background-repeat: none;
+    background-position: center;
+}

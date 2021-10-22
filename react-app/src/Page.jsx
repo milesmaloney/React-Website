@@ -6,6 +6,7 @@ import Footer from './Footer.jsx';
 import LocalClock from './LocalClock.jsx';
 import ImageScroller from './ImageScroller.jsx';
 import ProjectMain from './ProjectMain.jsx';
+import img6 from './Assets/img6.jpg';
 
 /*This react component displays a page based on the prop pageType, which specifies which page of the website is to be displayed*/
 export default class Page extends React.Component {
@@ -34,11 +35,11 @@ export default class Page extends React.Component {
         var headerStyle = {};
         //Initializes the Sidebar content; any additions/changes to the Sidebar should happen here
         var sidebarContent = [
-            <a href = "#home"><h3 onClick = {() => this.changeState('home')}>Home</h3></a>,
-            <a href = "https://www.linkedin.com/in/miles-maloney-0783051b9/" target = "_blank" rel = "noreferrer">LinkedIn</a>,
-            <a href = "https://github.com/milesmaloney" target = "_blank" rel = "noreferrer">Github</a>,
-            <a href = "#projects"><h3 onClick = {() => this.changeState('projects')}>Projects</h3></a>,
-            <a href = "#aboutme"><h3 onClick = {() => this.changeState('about me')}>About Me</h3></a>
+            <a href = "#home"><h3 onClick = {() => this.changeState('home')} title = "Return to home page">Home</h3></a>,
+            <a href = "https://www.linkedin.com/in/miles-maloney-0783051b9/" target = "_blank" rel = "noreferrer" title = "View Miles's LinkedIn profile">LinkedIn</a>,
+            <a href = "https://github.com/milesmaloney" target = "_blank" rel = "noreferrer" title = "View Miles's Github profile">Github</a>,
+            <a href = "#projects"><h3 onClick = {() => this.changeState('projects')} title = "Learn about Miles's projects">Projects</h3></a>,
+            <a href = "#aboutme"><h3 onClick = {() => this.changeState('about me')} title = "Learn about Miles's background">About Me</h3></a>
         ];
         if(this.state.pageType === 'home') {
             mainStyle = {left: '20%', top: '10%', width: '80%', height: '90%'};
@@ -61,12 +62,12 @@ export default class Page extends React.Component {
             //Initializes the content for the about me section; any additions/changes to the About Me page should happen here
             var aboutMeContent = [
                 <p>Hello! My name is Miles Maloney, and I am a recent graduate of the B.S. Computer Science program at University of San Diego. I have a Bachelor's Degree with a major in Computer Science and a Minor in Theatre Arts.</p>,
-                <p>This website is a hub for you to find everything you might want to learn about my background as a software engineer. You can click the links on the left to view my LinkedIn and Github profiles as well as go back to the home page or visit the projects page to check out some of the projects I have worked on.</p>,
+                <p>This website is a hub for you to find everything you might want to learn about my background as a software engineer. You can click the embedded links to view my {<a href = "https://www.linkedin.com/in/miles-maloney-0783051b9/" target = "_blank" rel = "noreferrer" title = "View Miles's LinkedIn profile">LinkedIn</a>} and {<a href = "https://github.com/milesmaloney" target = "_blank" rel = "noreferrer" title = "View Miles's Github profile">Github</a>} profiles as well as visit the {<a href = "#projects" onClick = {() => this.changeState('projects')} title = "Learn about Miles's projects">projects</a>} page to check out some of the projects I have worked on.</p>,
                 <p>I hope you have a nice day!</p>,
             ]
             return (
                 <div id = "page">
-                    <Header divs = {[1,1,0]} content = {[<LocalClock/>, <h1>Miles Maloney</h1>]} style = {headerStyle}/>
+                    <Header divs = {[1,1,1]} content = {[<LocalClock/>, <h1 onClick = {() => this.changeState('about me')}>Miles Maloney</h1>, <div style = {{height: '100%', width: '30%', backgroundImage: `url(${img6})`, backgroundSize: 'cover', backgroundPosition: 'center'}}></div>]} style = {headerStyle}/>
                     <Sidebar content = {sidebarContent} style = {sidebarStyle}/>
                     <div id = "main" style = {mainStyle}>
                         {aboutMeContent}

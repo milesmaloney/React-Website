@@ -14,6 +14,19 @@
     background-color: rgba(0, 0, 0, 0.40);
 }
 
+#main > p > a:link {
+    color: cyan;
+}
+
+#main > p > a:visited {
+    color: gold;
+    transition: color 180ms;
+}
+
+#main > p > a:hover {
+    color: cyan;
+}
+
 a > h3 {
     font-size: 40px;
     font-weight: normal;
