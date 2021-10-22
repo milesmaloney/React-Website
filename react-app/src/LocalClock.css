@@ -17,58 +17,120 @@
     font-size: 3rem;
     color: white;
     margin: 0%;
+    transition: color 180ms;
 }
+
+#digitOne > h4:hover {
+    color: rgb(256, 0, 0);
+}
+
 #digitTwo > h4 { 
     font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     font-size: 3rem;
     color: white;
     margin: 0%;
+    transition: color 180ms;
 }
+
+#digitTwo > h4:hover {
+    color: rgb(256, 128, 0);
+}
+
+
 #digitThree > h4 { 
     font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     font-size: 3rem;
     color: white;
     margin: 0%;
+    transition: color 180ms;
 }
+
+#digitThree > h4:hover {
+    color: rgb(256, 256, 0);
+}
+
+
 #digitFour > h4 { 
     font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     font-size: 3rem;
     color: white;
     margin: 0%;
+    transition: color 180ms;
 }
+
+#digitFour > h4:hover {
+    color: rgb(160, 190, 0);
+}
+
+
 #digitFive > h4 { 
     font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     font-size: 3rem;
     color: white;
     margin: 0%;
+    transition: color 180ms;
 }
+
+#digitFive > h4:hover {
+    color: rgb(0, 256, 0);
+}
+
 #digitSix > h4 { 
     font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     font-size: 3rem;
     color: white;
     margin: 0%;
+    transition: color 180ms;
 }
+
+#digitSix > h4:hover {
+    color: rgb(0, 256, 256);
+}
+
 #digitSeven > h4 { 
     font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     font-size: 3rem;
     color: white;
     margin: 0%;
+    transition: color 180ms;
 }
+
+#digitSeven > h4:hover {
+    color: rgb(0, 0, 256);
+}
+
 #digitEight > h4 { 
     font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     font-size: 3rem;
     color: white;
     margin: 0%;
+    transition: color 180ms;
 }
+
+#digitEight > h4:hover {
+    color: rgb(128, 0, 256);
+}
+
 #digitNine > h4 { 
     font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     font-size: 3rem;
     color: white;
     margin: 0%;
+    transition: color 180ms;
 }
+
+#digitNine > h4:hover {
+    color: rgb(190, 0, 256);
+}
+
 #digitTen > h4 { 
     font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     font-size: 3rem;
     color: white;
     margin: 0%;
+    transition: color 180ms;
+}
+
+#digitTen > h4:hover {
+    color: rgb(256, 0, 256);
 }

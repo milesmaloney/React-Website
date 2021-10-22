@@ -6,7 +6,6 @@ import img2 from './Assets/img2.jpg';
 import img3 from './Assets/img3.jpg';
 import img4 from './Assets/img4.jpg';
 import img5 from './Assets/img5.jpg';
-import img6 from './Assets/img6.jpg';
 
 
 export default class ImageScroller extends React.Component {
@@ -35,10 +34,9 @@ export default class ImageScroller extends React.Component {
         var scrollerStyle = {backgroundImage: `url(${this.state.currentPicture})`, backgroundSize: "cover", backgroundRepeat: "no-repeat", backgroundPosition: "center"};
         var shuffleStyle = {backgroundImage: `url(${'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSXaQf9Veq0jYowgDiQ_X9IUhw7imnG5q8McA&usqp=CAU'})`, backgroundSize: "cover", backgroundRepeat: "no-repeat", backgroundPosition: "center"};
         var shuffleDiv = <div></div>;
-        if(!this.state.shuffle) {
-            var shuffleTexture = {backgroundColor: 'rgba(0,0,0,0.5)', zIndex: '2', color: 'rgba(256, 256, 256, 0.5)'};
-            shuffleDiv = <div id = "shuffleTexture" style = {shuffleTexture}><h1>OFF</h1></div>
-        }
+        var shuffleTexture = {};
+        shuffleTexture = this.state.shuffle ? {backgroundColor: 'rgba(256,256,256,0.5)', zIndex: '2', color: 'rgba(0,0,0,0.5)'} : {backgroundColor: 'rgba(0,0,0,0.5)', zIndex: '2', color: 'rgba(256, 256, 256, 0.5)'};
+        shuffleDiv = this.state.shuffle ? <div id = "shuffleTexture" style = {shuffleTexture} title = "Turn off shuffle"><h2>ON</h2></div> : <div id = "shuffleTexture" style = {shuffleTexture} title = "Turn on shuffle"><h1>OFF</h1></div>;
         return (
             <div id = 'ImageScroller' style = {scrollerStyle} onClick = {this.changeImage}>
                 <div id = 'shuffleButton' onClick = {this.toggleShuffle} style = {shuffleStyle}>
@@ -68,7 +66,7 @@ export default class ImageScroller extends React.Component {
         None: Changes the currentPicture state to reflect the new image we want to display
     */
     changeImage() {
-        const possibleImages = [img0,img1,img2,img3,img4,img5,img6];
+        const possibleImages = [img0,img1,img2,img3,img4,img5];
         var switchCase = this.state.currentPicture;
         if(this.state.shuffle) {
             switchCase = possibleImages[Math.floor(Math.random() * possibleImages.length)];
@@ -100,11 +98,6 @@ export default class ImageScroller extends React.Component {
                 this.imageIntervalID = setInterval(this.changeImage, 3000);
                 break;            
             case img5:
-                this.setState({ currentPicture: img6 });
-                clearInterval(this.imageIntervalID);
-                this.imageIntervalID = setInterval(this.changeImage, 3000);
-                break;            
-            case img6:
                 this.setState({ currentPicture: img0 });
                 clearInterval(this.imageIntervalID);
                 this.imageIntervalID = setInterval(this.changeImage, 3000);

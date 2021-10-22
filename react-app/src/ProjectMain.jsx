@@ -25,15 +25,20 @@ export default class ProjectMain extends React.Component {
         None; renders the content within the web browser
     */
     render() {
-        var heightPerEntry =  parseInt(100 / this.props.listEntries.length);
+        //Takes an additional entry worth of space for margins
+        var heightPerEntry =  100 / this.props.listEntries.length;
+        //Defines space for top & bottom margins for each entry
         var listEntries = [];
         //Populates listEntries with corresponding list elements with partitioned styles for each entry
         for(var i = 0; i < this.props.listEntries.length; i++) {
-            var currStyle = {top: `${parseInt(0 + (heightPerEntry * i))}%`, left: '20%', height: `${heightPerEntry}%`, width: '80%'};
+            var currStyle = {top: `${0 + ((100 / this.props.listEntries.length) * i)}%`, left: '0%', height: `${heightPerEntry}%`, width: '100%', position: 'absolute'};
             listEntries.push(<li><ProjectEntry title = {this.props.listEntries[i].title} srcLink = {this.props.listEntries[i].srcLink} description = {this.props.listEntries[i].description} style = {currStyle} /></li>)
         }
         return (
             <div id = "projectMain">
+                <a target = "_blank" href = "https://github.com/milesmaloney" rel = "noreferrer">
+                    <div id = "ghicon" title = "Redirect to Github"></div>
+                </a>
                 <ul>
                     {listEntries}
                 </ul>

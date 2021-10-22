@@ -34,7 +34,7 @@ export default class LocalClock extends React.Component {
         //Gets the string in array format as opposed to divided digit pairs
         var shownDigits = digitPairs.join("").split("");
         return (
-            <div id = "clock">
+            <div id = "clock" onClick = {this.changeState}>
                 <div id = "digits">
                     <div id = "digitOne" style = {digitStyles[0]}>
                         <h4>{shownDigits[0]}</h4>

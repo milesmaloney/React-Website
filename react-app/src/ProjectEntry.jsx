@@ -34,8 +34,8 @@ export default class ProjectEntry extends React.Component {
         var imageStyle = {height: '0%', width: '0%'};
         var descriptionStyle = {height: '0%', width: '0%'};
         var demoStyle = {height: '0%', width: '0%'};
-        var imageDiv = <div></div>;
-        var demoDiv = <div></div>;
+        var imageDiv = null;
+        var demoDiv = null;
         if(this.props.image) {
             imageStyle = {top: '20%', left: '60%', width: '40%', backgroundImage: `url(${this.props.image})`, backgroundSize: 'cover',backgroundPosition: 'center'};
             imageDiv = <div id = "image" style = {imageStyle}></div>;
@@ -45,11 +45,11 @@ export default class ProjectEntry extends React.Component {
             demoDiv = <div id = "demo" style = {demoStyle}>{this.props.demo}</div>;
         }
         //The description should use the remainder of the space;
-        descriptionStyle = {top: '10%', left: '0%', width: (this.props.image ? '60%':'100%'), height: (this.props.demo ? '60%':'90%')};
+        descriptionStyle = {top: '25%', left: '0%', width: (this.props.image ? '60%':'100%'), height: (this.props.demo ? '45%':'75%'), position: 'absolute'};
         return (
-            <div id = "projectEntry">
+            <div id = "projectEntry" style = {this.props.style}>
                 <div id = "title">
-                    <a href = {this.props.srcLink} target = "_blank" rel = "noreferrer"><h1>{this.props.title}</h1></a>
+                    <h1 title = {`View source code for ${this.props.title}`}><a href = {this.props.srcLink} target = "_blank" rel = "noreferrer">{this.props.title}</a></h1>
                 </div>
                 <div id = "description" style = {descriptionStyle}>
                     {imageDiv}

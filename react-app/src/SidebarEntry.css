@@ -21,6 +21,11 @@
 
 #sidebarEntry > a:visited {
     color: darkgray;
+    transition: color 0.5s;
+}
+
+#sidebarEntry > a:hover {
+    color: whitesmoke;
 }
 
 #sidebarEntry:hover {
