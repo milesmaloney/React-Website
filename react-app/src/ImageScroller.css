@@ -55,3 +55,7 @@
     opacity: 1;
     font-size: 24px;
 }
+
+#shuffleSlider {
+    transition: background-color 180ms, left 180ms;
+}

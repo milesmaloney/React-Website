@@ -33,6 +33,7 @@ export default class ImageScroller extends React.Component {
     render() {
         var scrollerStyle = {backgroundImage: `url(${this.state.currentPicture})`, backgroundSize: "cover", backgroundRepeat: "no-repeat", backgroundPosition: "center"};
         var shuffleStyle = {backgroundImage: `url(${'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSXaQf9Veq0jYowgDiQ_X9IUhw7imnG5q8McA&usqp=CAU'})`, backgroundSize: "cover", backgroundRepeat: "no-repeat", backgroundPosition: "center"};
+        var sliderStyle = {backgroundColor: `${this.state.shuffle ? 'rgba(0,0,0,0.5)' : 'rgba(256,256,256,0.5)'}`, top: '0%', left: `${this.state.shuffle ? '80' : '0'}%`, height: '100%', width: '20%', position: 'absolute'};
         var shuffleDiv = <div></div>;
         var shuffleTexture = {};
         shuffleTexture = this.state.shuffle ? {backgroundColor: 'rgba(256,256,256,0.5)', zIndex: '2', color: 'rgba(0,0,0,0.5)'} : {backgroundColor: 'rgba(0,0,0,0.5)', zIndex: '2', color: 'rgba(256, 256, 256, 0.5)'};
@@ -40,6 +41,7 @@ export default class ImageScroller extends React.Component {
         return (
             <div id = 'ImageScroller' style = {scrollerStyle} onClick = {this.changeImage}>
                 <div id = 'shuffleButton' onClick = {this.toggleShuffle} style = {shuffleStyle}>
+                    <div id = 'shuffleSlider' style = {sliderStyle}></div>
                     {shuffleDiv}
                 </div>
             </div>

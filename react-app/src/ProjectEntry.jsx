@@ -45,7 +45,7 @@ export default class ProjectEntry extends React.Component {
             demoDiv = <div id = "demo" style = {demoStyle}>{this.props.demo}</div>;
         }
         //The description should use the remainder of the space;
-        descriptionStyle = {top: '25%', left: '0%', width: (this.props.image ? '60%':'100%'), height: (this.props.demo ? '45%':'75%'), position: 'absolute'};
+        descriptionStyle = {top: '20%', left: '0%', width: (this.props.image ? '60%':'100%'), height: (this.props.demo ? '45%':'80%'), position: 'absolute'};
         return (
             <div id = "projectEntry" style = {this.props.style}>
                 <div id = "title">
