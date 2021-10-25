@@ -1,11 +1,17 @@
 #sidebarEntry {
-    background-color: rgba(0, 0, 60, 0.66);
+    background-color: rgba(0, 0, 64, 0.5);
+    z-index: 2;
     display: flex;
     height: 100%;
     width: 100%;
     align-items: center;
     justify-content: center;
-    transition: box-shadow 180ms ease-in;
+    transition: box-shadow 180ms ease-in, background-color 1s;
+}
+
+#sidebarEntry:hover {
+    box-shadow: 0 0 0 3px royalblue;
+    background-color: rgba(0,0,0,0);
 }
 
 #sidebarEntry > a {
@@ -26,8 +32,4 @@
 
 #sidebarEntry > a:hover {
     color: whitesmoke;
-}
-
-#sidebarEntry:hover {
-    box-shadow: 0 0 0 3px royalblue;
 }

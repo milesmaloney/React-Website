@@ -1,17 +1,34 @@
 #projectEntry {
-    background-color:rgba(0, 0, 0, 0.33);
+    overflow: auto;
+    background-color:rgba(0, 0, 0, 0.5);
     height: 100%;
     width: 100%;
     outline-color: rgb(128, 0, 256);
     outline-style: groove;
+    transition: background-color 1s;
 }
 
-#title {
+#projectEntry:hover {
+    background-color: rgba(0,0,0,0);
+}
+
+#projectEntry > #title {
+    background-color: rgba(64, 0, 128, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
     height: 20%;
     width: 100%;
     top: 0%;
     left: 0%;
     position: absolute;
+
+}
+
+#projectEntry > #description {
+    background-color: rgba(64, 0, 128, 0.5);
+    display: flex;
+    align-items: center;
 }
 
 #projectEntry > li {

@@ -1,6 +1,5 @@
 #projectMain {
     position: absolute;
-    background-color: rgba(128, 0, 256, 0.35);
     height: 100%;
     width: 100%;
 }
@@ -17,15 +16,11 @@
 
 #projectMain > a {
     top: 0%;
-    right: 0%;
+    right: 17px;
     height: 5%;
     width: 3%;
     z-index: 1;
-    position: absolute;
-    background-image: url('https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png');
-    background-size: contain;
-    background-repeat: none;
-    background-position: center;
+    position: fixed;
 }
 
 a > #ghicon {
