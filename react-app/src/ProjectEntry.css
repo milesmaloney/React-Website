@@ -26,13 +26,93 @@
 }
 
 #projectEntry > #description {
+    position: absolute;
     background-color: rgba(64, 0, 128, 0.5);
     display: flex;
     align-items: center;
+    justify-content: center;
+}
+
+#projectEntry > #demoText {
+    position: absolute;
+    background-color: rgba(64, 0, 128, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#demoText > h3 {
+    margin: 0%;
+    padding: 0%;
+    color: azure;
+    font-size: 1.5rem;
+}
+
+#demoText > h3 > a:link {
+    color: chartreuse;
+}
+
+#demoText > h3 > a:visited {
+    color: white;
 }
 
 #projectEntry > li {
     padding: 0%;
+}
+
+#projectEntry > #demoEntry {
+    height: 100%;
+    width: 100%;
+}
+
+#demoEntry > #demo {
+    top: 0%;
+    height: 90%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+}
+
+#demo > h1 {
+    background-color: rgba(0,0,0,0.35);
+    color: azure;
+}
+
+#demo > h1 > a:link {
+    color: rgb(128,0,255);
+}
+
+#demo > h1 > a:visited {
+    color: white;
+}
+
+#demoEntry > #returnText {
+    background-color: rgba(0, 0, 0, 0.25);
+    margin: 0%;
+    padding: 0%;
+    bottom: 0%;
+    height: 10%;
+    width: 100%;
+    position: absolute;
+}
+
+#returnText > h3 {
+    margin: 0%;
+    padding: 0%;
+    font-size: 1.5rem;
+    color: azure;
+    bottom : 0%;
+    position: relative;
+}
+
+#returnText > h3 > a:link {
+    color: rgb(128,0,255);
+}
+
+#returnText > h3 > a:visited {
+    color: white;
 }
 
 #title > h1 > a {
@@ -51,6 +131,16 @@
 
 
 #description > h3 {
+    margin: 0%;
+    padding: 0%;
     font-size: 1.5rem;
     color:azure;
+}
+
+#description > h3 > h3 > a:link {
+    color: chartreuse;
+}
+
+#description > h3 > h3 > a:visited {
+    color: white;
 }
