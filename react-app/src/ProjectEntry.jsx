@@ -20,7 +20,8 @@ export default class ProjectEntry extends React.Component {
     */
     constructor(props) {
         super(props);
-        this.state = {};
+        this.state = {demoMode: false};
+        this.toggleDemoMode = this.toggleDemoMode.bind(this);
     }
 
     /*
@@ -31,32 +32,42 @@ export default class ProjectEntry extends React.Component {
         None; renders the content within the web browser
     */
     render() {
-        var imageStyle = {height: '0%', width: '0%'};
-        var descriptionStyle = {height: '0%', width: '0%'};
-        var demoStyle = {height: '0%', width: '0%'};
-        var imageDiv = null;
-        var demoDiv = null;
-        if(this.props.image) {
-            imageStyle = {top: '20%', left: '60%', width: '40%', backgroundImage: `url(${this.props.image})`, backgroundSize: 'cover',backgroundPosition: 'center'};
-            imageDiv = <div id = "image" style = {imageStyle}></div>;
-        }
-        if(this.props.demo) {
-            demoStyle = {bottom: '0%', height: '30%', width: '100%', left: '0%'};
-            demoDiv = <div id = "demo" style = {demoStyle}>{this.props.demo}</div>;
-        }
-        //The description should use the remainder of the space;
-        descriptionStyle = {top: '20%', left: '0%', width: (this.props.image ? '60%':'100%'), height: (this.props.demo ? '45%':'80%'), position: 'absolute'};
-        return (
-            <div id = "projectEntry" style = {this.props.style}>
-                <div id = "title">
-                    <h1 title = {`View source code for ${this.props.title}`}><a href = {this.props.srcLink} target = "_blank" rel = "noreferrer">{this.props.title}</a></h1>
+        if(!this.state.demoMode) {
+            var demoText = this.props.demo ? <h3>Click <a href = "#projects" rel = "noreferrer" onClick = {this.toggleDemoMode} title = {`View the demo for ${this.props.title}`}>here</a> to view a demo of {this.props.title}</h3> : null;
+            var descriptionStyle = {top: '20%', left: '0%', height: `${this.props.demo ? '70' : '80'}%`, width: '100%'};
+            var demoTextStyle = this.props.demo ? {bottom: '0%', left: '0%', height: '10%', width: '100%'} : {height: '0%', width: '0%'};
+            //The description should use the remainder of the space;
+            return (
+                <div id = "projectEntry" style = {this.props.style}>
+                    <div id = "title">
+                        <h1 title = {`View source code for ${this.props.title}`}><a href = {this.props.srcLink} target = "_blank" rel = "noreferrer">{this.props.title}</a></h1>
+                    </div>
+                    <div id = "description" style = {descriptionStyle}>
+                        <h3>{this.props.description}</h3>
+                    </div>
+                    <div id = "demoText" style = {demoTextStyle}>
+                        {demoText}
+                    </div>
                 </div>
-                <div id = "description" style = {descriptionStyle}>
-                    {imageDiv}
-                    <h3>{this.props.description}</h3>
+            )
+        }
+        else {
+            return (
+                <div id = "projectEntry" style = {this.props.style}>
+                    <div id = "demoEntry">
+                        <div id = "demo">
+                            {this.props.demo}
+                        </div>
+                        <div id = "returnText">
+                            <h3>Click <a href = "#projects" rel = "noreferrer" onClick = {this.toggleDemoMode} title = {`Return to the description for ${this.props.title}`}>here</a> to return to the description of {this.props.title}</h3>
+                        </div>
+                    </div>
                 </div>
-                {demoDiv}
-            </div>
-        )
+            )
+        }
+    }
+
+    toggleDemoMode() {
+        this.state.demoMode ? this.setState({demoMode: false}) : this.setState({demoMode: true});
     }
 }

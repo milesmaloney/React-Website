@@ -1,12 +1,22 @@
 import React from 'react';
 import './Page.css';
+//Layout imports
 import Header from './Header.jsx';
 import Sidebar from './Sidebar.jsx';
-import Footer from './Footer.jsx';
+//import Footer from './Footer.jsx';
+import ProjectMain from './ProjectMain.jsx';
+//Component Imports
 import LocalClock from './LocalClock.jsx';
 import ImageScroller from './ImageScroller.jsx';
-import ProjectMain from './ProjectMain.jsx';
-import img6 from './Assets/img6.jpg';
+//Asset Imports
+import img0 from './Assets/images/img0.jpg';
+import img1 from './Assets/images/img1.jpg';
+import img2 from './Assets/images/img2.jpg';
+import img3 from './Assets/images/img3.jpg';
+import img4 from './Assets/images/img4.jpg';
+import img5 from './Assets/images/img5.jpg';
+import img6 from './Assets/images/img6.jpg';
+//import cubicVoiceAIDemoVideo from './Assets/demoVideos/demoVideo.mp4';
 
 /*This react component displays a page based on the prop pageType, which specifies which page of the website is to be displayed*/
 export default class Page extends React.Component {
@@ -45,12 +55,14 @@ export default class Page extends React.Component {
             mainStyle = {left: '20%', top: '10%', width: '80%', height: '90%'};
             sidebarStyle = {left: '0%', top: '10%', width: '20%', height: '90%'};
             headerStyle = {left: '0%', top: '0%', width: '100%', height: '10%'};
+            //Initializes the array of image links for the image scroller to iterate through
+            var images = [img0,img1,img2,img3,img4,img5];
             return (
                 <div id = "page">
                     <Header divs = {[1,1,0]} content = {[<LocalClock/>, <h1 onClick = {() => this.changeState('about me')}>Miles Maloney</h1>]} style = {headerStyle}/>
                     <Sidebar content = {sidebarContent} style = {sidebarStyle}/>
                     <div id = "main" style = {mainStyle}>
-                        <ImageScroller shuffle = {0}/>
+                        <ImageScroller shuffle = {0} images = {images}/>
                     </div>
                 </div>
             );
@@ -64,7 +76,7 @@ export default class Page extends React.Component {
                 <p>Hello! My name is Miles Maloney, and I am a recent graduate (May 2021) of the B.S. Computer Science program at University of San Diego. I have a Bachelor's Degree with a major in Computer Science and a Minor in Theatre Arts.</p>,
                 <p>This website is a hub for you to find everything you might want to learn about my background as a software engineer. You can click the embedded links or the links in the sidebar to view my {<a href = "https://www.linkedin.com/in/miles-maloney-0783051b9/" target = "_blank" rel = "noreferrer" title = "View Miles's LinkedIn profile">LinkedIn</a>} and {<a href = "https://github.com/milesmaloney" target = "_blank" rel = "noreferrer" title = "View Miles's Github profile">Github</a>} profiles as well as visit the {<a href = "#projects" onClick = {() => this.changeState('projects')} title = "Learn about Miles's projects">projects</a>} page to check out some of the projects I have worked on.</p>,
                 <p>I hope you have a nice day!</p>,
-            ]
+            ];
             return (
                 <div id = "page">
                     <Header divs = {[1,1,1]} content = {[<LocalClock/>, <h1 onClick = {() => this.changeState('about me')}>Miles Maloney</h1>, <div style = {{height: '100%', width: '30%', backgroundImage: `url(${img6})`, backgroundSize: 'cover', backgroundPosition: 'center'}}></div>]} style = {headerStyle}/>
@@ -80,9 +92,9 @@ export default class Page extends React.Component {
             sidebarStyle = {left: '0%', top: '0%', width: '20%', height: '100%'};
             //Initializes the project list entries; any additions/changes to ProjectMain should happen here
             var projectList = [
-                {title: 'Cubic Voice AI', srcLink: 'https://github.com/milesmaloney/virtual-ticket-agent', description: 'In this industry-sponsored project, three fellow students from University of San Diego and I created a conversational ticket agent using natural language processing engine Mycroft AI. This virtual ticket agent was built in Python on Raspberry Pi hardware, and used SQLite3 for database purposes. It has the functionalities of creating an account, buying a pass, routing you to your destination via transit, and checking your account balance.'},
-                {title: 'Turn-based Game', srcLink: 'https://github.com/milesmaloney/Game-Builder', description: 'In this javascript project, I decided to create a game in order to develop my skills and learn more about javascript. This turn-based game allows a user to select a name and class and battle alongside AI allies against AI enemies. I plan to include a demo when I am finished making the game compatible with React. In the meantime, you may view the source code by clicking the title and run the game from the terminal if you\'d like.'},
-                {title: 'React Website', srcLink: 'https://github.com/milesmaloney/React-Website', description: 'I created this React website in response to the surprising amount of demand for web developers in the current job market. I found that this project was very helpful in understanding front-end technologies and the challenges that come with them, as well as the surprising convenience of many features of React. You are currently viewing this exact website, which was built from scratch using React.js.'},
+                {title: 'Cubic Voice AI', srcLink: 'https://github.com/milesmaloney/virtual-ticket-agent', demo: <iframe width="560" height="315" src="https://www.youtube.com/embed/_1iAEM2Z0rE" title="Cubic Voice AI Demo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>, description: 'In this industry-sponsored project, three fellow students from University of San Diego and I created a conversational ticket agent using natural language processing engine Mycroft AI. This virtual ticket agent was built in Python on Raspberry Pi hardware, and used SQLite3 for database purposes. It has the functionalities of creating an account, buying a pass, routing you to your destination via transit, and checking your account balance.'},
+                {title: 'Turn-based Game', srcLink: 'https://github.com/milesmaloney/Game-Builder', demo: <h1>The demo for this project is currently unavailable due to an in-progress conversion from a command line interface to a React.js interface. In the meantime, you can run this project through the command line by following the instructions in the <a href = 'https://github.com/milesmaloney/Game-Builder' target = "_blank" rel = "noreferrer">source code repository</a>'s README file.</h1> , description: 'In this javascript project, I decided to create a game in order to develop my skills and learn more about javascript. This turn-based game allows a user to select a name and class and battle alongside AI allies against AI enemies. I plan to include a demo when I am finished making the game compatible with React. In the meantime, you may view the source code by clicking the title and run the game from the terminal if you\'d like.'},
+                {title: 'React Website', srcLink: 'https://github.com/milesmaloney/React-Website', demo: <h1>You are currently viewing the React Website project. To view its functionalities in more detail, you can explore the website and see what happens when you click or hover on each and every part of the site.</h1>, description: 'I created this React website in response to the surprising amount of demand for web developers in the current job market. I found that this project was very helpful in understanding front-end technologies and the challenges that come with them, as well as the surprising convenience of many features of React. You are currently viewing this exact website, which was built from scratch using React.js.'},
             ];
             return (
                 <div id = "page">
