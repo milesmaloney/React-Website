@@ -36,9 +36,19 @@ export default class ProjectEntry extends React.Component {
             var demoText = this.props.demo ? <h3>Click <a href = "#projects" rel = "noreferrer" onClick = {this.toggleDemoMode} title = {`View the demo for ${this.props.title}`}>here</a> to view a demo of {this.props.title}</h3> : null;
             var descriptionStyle = {top: '20%', left: '0%', height: `${this.props.demo ? '70' : '80'}%`, width: '100%'};
             var demoTextStyle = this.props.demo ? {bottom: '0%', left: '0%', height: '10%', width: '100%'} : {height: '0%', width: '0%'};
+            var images = [];
+            if(this.props.imgLinks) {
+                var widthPerImage = 100 / this.props.imgLinks.length;
+                for(var i = 0; i < this.props.imgLinks.length; i++) {
+                    images.push(<div id = "image" style = {{left: `${0 + (widthPerImage * i)}%`, width: `${widthPerImage}%`, backgroundImage: `url(${this.props.imgLinks[i]})`, backgroundSize: 'contain', backgroundPosition: 'center', backgroundRepeat: 'no-repeat'}}></div>)
+                }
+            }
             //The description should use the remainder of the space;
             return (
                 <div id = "projectEntry" style = {this.props.style}>
+                    <div id = "images">
+                        {images}
+                    </div>
                     <div id = "title">
                         <h1 title = {`View source code for ${this.props.title}`}><a href = {this.props.srcLink} target = "_blank" rel = "noreferrer">{this.props.title}</a></h1>
                     </div>
