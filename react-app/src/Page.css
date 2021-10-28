@@ -4,27 +4,52 @@
 }
 
 #main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     overflow: auto;
 }
 
-#main > p {
+#headerRight > #images {
+    height: 100%;
+    width: 100%;
+}
+
+#headerRight > #images > div {
+    top: 0%;
+    height: 100%;
+    position: absolute;
+}
+
+
+#main > #aboutMe {
+    background-color: rgba(192, 255, 255, 0.85);
+    border: 10px groove royalblue;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 90%;
+    width: 90%;
+}
+
+#aboutMe > p {
+    margin: 10%;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 40px;
-    color:gold;
-    background-color: rgba(0, 0, 0, 0.40);
+    color:rgb(32, 32, 32);
 }
 
-#main > p > a:link {
-    color: cyan;
-}
-
-#main > p > a:visited {
+#aboutMe > p > a:link {
     color: gold;
+}
+
+#aboutMe > p > a:visited {
+    color: black;
     transition: color 180ms;
 }
 
-#main > p > a:hover {
-    color: cyan;
+#aboutMe > p > a:hover {
+    color: gold;
 }
 
 a > h3 {
