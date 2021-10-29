@@ -34,10 +34,12 @@ export default class ImageScroller extends React.Component {
         shuffleTexture = this.state.shuffle ? {backgroundColor: 'rgba(256,256,256,0.5)', zIndex: '2', color: 'rgba(0,0,0,0.5)'} : {backgroundColor: 'rgba(0,0,0,0.5)', zIndex: '2', color: 'rgba(256, 256, 256, 0.5)'};
         shuffleDiv = this.state.shuffle ? <div id = "shuffleTexture" style = {shuffleTexture} title = "Turn off shuffle"><h2>ON</h2></div> : <div id = "shuffleTexture" style = {shuffleTexture} title = "Turn on shuffle"><h1>OFF</h1></div>;
         return (
-            <div id = 'ImageScroller' style = {scrollerStyle} onClick = {this.changeImage} title = {"Continue to next image"}>
-                <div id = 'shuffleButton' onClick = {this.toggleShuffle} style = {shuffleStyle}>
-                    <div id = 'shuffleSlider' style = {sliderStyle}></div>
-                    {shuffleDiv}
+            <div id = 'imageScrollerBackground' style = {{height: '100%', width: '100%', backgroundImage: `url(${this.props.bgSrc})`, backgroundSize: 'cover', backgroundPosition: 'center'}}>
+                <div id = 'ImageScroller' style = {scrollerStyle} onClick = {this.changeImage} title = {"Continue to next image"}>
+                    <div id = 'shuffleButton' onClick = {this.toggleShuffle} style = {shuffleStyle}>
+                        <div id = 'shuffleSlider' style = {sliderStyle}></div>
+                        {shuffleDiv}
+                    </div>
                 </div>
             </div>
         );
