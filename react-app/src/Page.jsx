@@ -51,11 +51,11 @@ export default class Page extends React.Component {
         var headerStyle = {};
         //Initializes the Sidebar content; any additions/changes to the Sidebar should happen here
         var sidebarContent = [
-            <a href = "#home"><h3 onClick = {() => this.changeState('home')} title = "Return to home page">Home</h3></a>,
+            <a href = "#home" onClick = {() => this.changeState('home')} title = "Return to home page"><h3>Home</h3></a>,
             <a href = "https://www.linkedin.com/in/miles-maloney-0783051b9/" target = "_blank" rel = "noreferrer" title = "View Miles's LinkedIn profile">LinkedIn</a>,
             <a href = "https://github.com/milesmaloney" target = "_blank" rel = "noreferrer" title = "View Miles's Github profile">Github</a>,
-            <a href = "#projects"><h3 onClick = {() => this.changeState('projects')} title = "Learn about Miles's projects">Projects</h3></a>,
-            <a href = "#aboutme"><h3 onClick = {() => this.changeState('about me')} title = "Learn about Miles's background">About Me</h3></a>
+            <a href = "#projects" onClick = {() => this.changeState('projects')} title = "Learn about Miles's projects"><h3 >Projects</h3></a>,
+            <a href = "#aboutme" onClick = {() => this.changeState('about me')} title = "Learn about Miles's background"><h3>About Me</h3></a>
         ];
         if(this.state.pageType === 'home') {
             mainStyle = {left: '20%', top: '10%', width: '80%', height: '90%'};
