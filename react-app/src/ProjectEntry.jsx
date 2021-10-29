@@ -33,7 +33,7 @@ export default class ProjectEntry extends React.Component {
     */
     render() {
         if(!this.state.demoMode) {
-            var demoText = this.props.demo ? <h3>Click <a href = "#projects" rel = "noreferrer" onClick = {this.toggleDemoMode} title = {`View the demo for ${this.props.title}`}>here</a> to view a demo of {this.props.title}</h3> : null;
+            var demoText = this.props.demo ? <h3>Click <a href = "#projects" rel = "noreferrer" onClick = {this.toggleDemoMode} title = {`View the demo for ${this.props.title}`}>here</a> to view a demo of the {this.props.title} project</h3> : null;
             var descriptionStyle = {top: '20%', left: '0%', height: `${this.props.demo ? '70' : '80'}%`, width: '100%'};
             var demoTextStyle = this.props.demo ? {bottom: '0%', left: '0%', height: '10%', width: '100%'} : {height: '0%', width: '0%'};
             var images = [];

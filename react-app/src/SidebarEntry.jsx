@@ -26,6 +26,7 @@ export default class SidebarEntry extends React.Component {
     render() {
         return (
             <div id = "sidebarEntry">
+                <div id = "sidebarBackground" style = {this.props.bgStyle}></div>
                 {this.props.content}
             </div>
         )
