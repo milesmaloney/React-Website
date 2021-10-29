@@ -15,6 +15,7 @@ export default class Sidebar extends React.Component {
     constructor(props) {
         super(props);
         this.state = {};
+        this.bgImages = [{src: 'https://nineplanets.org/wp-content/uploads/2019/09/earth.png', height: 50, width: 50}, {src: 'https://nineplanets.org/wp-content/uploads/2019/09/mars.png', height: 30, width: 30}, {src: 'https://nineplanets.org/wp-content/uploads/2019/09/jupiter.png', height: 80, width: 80}, {src: 'https://nineplanets.org/wp-content/uploads/2019/09/saturn.png', height: 70, width: 70}, {src: 'https://nineplanets.org/wp-content/uploads/2019/09/uranus.png', height: 60, width: 60}];
     }
 
     /*
@@ -30,7 +31,7 @@ export default class Sidebar extends React.Component {
         //Gives a style to each element in such a way that each prop has an equal amount of space within the sidebar & the sidebar gets covered
         for(var i = 0; i < this.props.content.length; i++) {
             var currStyle = {top: `${(0 + (pcntPerElement * i)).toString()}%`, left: '0%', height: `${pcntPerElement.toString()}%`, width: '100%', position: 'absolute'};
-            listElements.push(<li key = {i} style = {currStyle}><SidebarEntry content = {this.props.content[i]}/></li>);
+            listElements.push(<li key = {i} style = {currStyle}><SidebarEntry content = {this.props.content[i]} bgStyle = {{top: `${Math.floor(Math.random() * (100 - this.bgImages[i].height))}%`, left: `${Math.floor(Math.random() * (100 - this.bgImages[i].width))}%`, height: `${String(this.bgImages[i].height)}%`, width: `${String(this.bgImages[i].width)}%`, backgroundImage: `url(${this.bgImages[i].src})`, backgroundSize: 'contain', backgroundPosition: 'center', backgroundRepeat: 'no-repeat', position: 'absolute'}}/></li>);
         }
         return (
             <div id = "sidebar" style = {this.props.style}>

@@ -59,7 +59,7 @@ export default class Page extends React.Component {
         ];
         if(this.state.pageType === 'home') {
             mainStyle = {left: '20%', top: '10%', width: '80%', height: '90%'};
-            sidebarStyle = {left: '0%', top: '10%', width: '20%', height: '90%'};
+            sidebarStyle = {left: '0%', top: '10%', width: '20%', height: '90%', borderRight: '5px groove rgba(0,0,0,1)'};
             headerStyle = {left: '0%', top: '0%', width: '100%', height: '10%'};
             //Initializes the array of image links for the image scroller to iterate through
             var images = [img0,img1,img2,img3,img4,img5];
@@ -87,7 +87,6 @@ export default class Page extends React.Component {
                     <div style = {{right: '35%', width: '25%', backgroundImage: 'url(https://www.sandiego.edu/assets/global/images/logos/usd-logo-stacked-inverse.png)', backgroundSize: 'contain', backgroundPosition: 'center', backgroundRepeat: 'no-repeat'}}></div>
                 </div>
             ];
-            console.log(headerRightContent[0]);
             return (
                 <div id = "page">
                     <Header divs = {[1,1,1]} content = {[<LocalClock/>, <h1 onClick = {() => this.changeState('about me')}>Miles Maloney</h1>, headerRightContent[0]]} style = {headerStyle}/>
@@ -102,7 +101,7 @@ export default class Page extends React.Component {
         }
         else if(this.state.pageType === 'projects') {
             mainStyle = {left: '20%', top: '0%', width: '80%', height: '100%', backgroundImage: 'url(https://prod-discovery.edx-cdn.org/media/programs/card_images/e0de6882-c5d1-43f3-99e0-17e386489dca-9c3bda2df48f.jpg)', backgroundSize: 'cover', backgroundPosition: 'left'};
-            sidebarStyle = {left: '0%', top: '0%', width: '20%', height: '100%'};
+            sidebarStyle = {left: '0%', top: '0%', width: '20%', height: '100%', outline: '2px groove rgba(128, 0, 256, 0.75)'};
             //Initializes the project list entries; any additions/changes to ProjectMain should happen here
             var projectList = [
                 {title: 'Cubic Voice AI', srcLink: 'https://github.com/milesmaloney/virtual-ticket-agent', demo: <iframe width="560" height="315" src="https://www.youtube.com/embed/_1iAEM2Z0rE" title="Cubic Voice AI Demo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>, imgLinks: ['https://mycroft.ai/wp-content/uploads/2018/01/Mycroft-Logo-Square-Web-thumb.png', 'https://www.sandiego.edu/assets/global/images/logos/usd-logo-stacked-inverse.png', 'https://www.servicenow.com/content/dam/servicenow/images/customers-asset/details/logo/logo-cubic-transportation.png.imgw.720.720.jpg'], description: '\tIn this industry-sponsored project, three fellow students from University of San Diego and I created a conversational ticket agent using natural language processing engine Mycroft AI. This virtual ticket agent was built in Python on Raspberry Pi hardware, and used SQLite3 for database purposes. It has the functionalities of creating an account, buying a pass, routing you to your destination via transit, and checking your account balance.'},

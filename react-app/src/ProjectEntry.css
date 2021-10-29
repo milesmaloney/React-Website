@@ -3,8 +3,7 @@
     background-color:rgba(0, 0, 0, 0.5);
     height: 100%;
     width: 100%;
-    outline-color: rgb(128, 0, 256);
-    outline-style: groove;
+    outline: 2px outset rgb(128,0,255);
     transition: background-color 1s;
 }
 
@@ -93,8 +92,9 @@
 }
 
 #demo > h1 {
-    background-color: rgba(0,0,0,0.35);
+    background-color: rgba(0,0,0,0.5);
     color: azure;
+    margin: 5%;
 }
 
 #demo > h1 > a:link {
