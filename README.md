@@ -1,1 +1,3 @@
 # React-Website
+
+This repository contains the necessary code to run my portfolio website hosted at https://milesmaloney.github.io/portfolio. The github pages hosting is handled in the portfolio repository in my profile due to issues with the way the file system for this repository was set up with respect to github pages. However, this repository will remain alive to maintain a development log for the react website, keeping all commits that were created and merged throughout the process.
