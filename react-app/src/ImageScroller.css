@@ -1,6 +1,37 @@
 #ImageScroller {
     height: 100%;
     width: 100%;
+    background-size: cover;
+    background-position: center;
+    z-index: 1;
+    position: absolute;
+}
+
+#imageScrollerBackground {
+    height: 100%;
+    width: 100%;
+    background-size: cover;
+    background-position: center;
+}
+
+#imageScrollerBackground > #loadingBg {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 0;
+    position: absolute;
+}
+
+#imageScrollerBackground > #loadingBg > h1 {
+    pointer-events: none;
+    font-size: 4rem;
+    color: rgba(256,256,256,0.6);
+    z-index: 0;
+    position: absolute;
 }
 
 #shuffleButton {
@@ -11,12 +42,16 @@
     outline-style: outset;
     outline-color: grey;
     position: absolute;
+    background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSXaQf9Veq0jYowgDiQ_X9IUhw7imnG5q8McA&usqp=CAU');
+    background-size: cover;
+    background-position: center;
 }
 
 #shuffleTexture {
     margin: 0%;
     height: 100%;
     width: 100%;
+    z-index: 2;
     outline-style: inset;
     outline-color: whitesmoke;
 }
@@ -57,5 +92,9 @@
 }
 
 #shuffleSlider {
+    top: 0%;
+    height: 100%;
+    width: 20%;
+    position: absolute;
     transition: background-color 180ms, left 180ms;
 }

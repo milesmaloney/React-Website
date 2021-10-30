@@ -26,17 +26,19 @@ export default class ImageScroller extends React.Component {
         None; renders the content within the web browser
     */
     render() {
-        var scrollerStyle = {backgroundImage: `url(${this.props.images[this.state.currentPicture]})`, backgroundSize: "cover", backgroundRepeat: "no-repeat", backgroundPosition: "center"};
-        var shuffleStyle = {backgroundImage: `url(${'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSXaQf9Veq0jYowgDiQ_X9IUhw7imnG5q8McA&usqp=CAU'})`, backgroundSize: "cover", backgroundRepeat: "no-repeat", backgroundPosition: "center"};
-        var sliderStyle = {backgroundColor: `${this.state.shuffle ? 'rgba(0,0,0,0.5)' : 'rgba(256,256,256,0.5)'}`, top: '0%', left: `${this.state.shuffle ? '80' : '0'}%`, height: '100%', width: '20%', position: 'absolute'};
-        var shuffleDiv = <div></div>;
+        var scrollerStyle = {backgroundImage: `url(${this.props.images[this.state.currentPicture]})`};
+        var sliderStyle = {backgroundColor: `${this.state.shuffle ? 'rgba(0,0,0,0.5)' : 'rgba(256,256,256,0.5)'}`, left: `${this.state.shuffle ? '80' : '0'}%`};
+        var shuffleDiv = null;
         var shuffleTexture = {};
-        shuffleTexture = this.state.shuffle ? {backgroundColor: 'rgba(256,256,256,0.5)', zIndex: '2', color: 'rgba(0,0,0,0.5)'} : {backgroundColor: 'rgba(0,0,0,0.5)', zIndex: '2', color: 'rgba(256, 256, 256, 0.5)'};
+        shuffleTexture = this.state.shuffle ? {backgroundColor: 'rgba(256,256,256,0.5)', color: 'rgba(0,0,0,0.5)'} : {backgroundColor: 'rgba(0,0,0,0.5)', color: 'rgba(256, 256, 256, 0.5)'};
         shuffleDiv = this.state.shuffle ? <div id = "shuffleTexture" style = {shuffleTexture} title = "Turn off shuffle"><h2>ON</h2></div> : <div id = "shuffleTexture" style = {shuffleTexture} title = "Turn on shuffle"><h1>OFF</h1></div>;
         return (
-            <div id = 'imageScrollerBackground' style = {{height: '100%', width: '100%', backgroundImage: `url(${this.props.bgSrc})`, backgroundSize: 'cover', backgroundPosition: 'center'}}>
+            <div id = 'imageScrollerBackground' style = {{backgroundImage: `url(${this.props.bgSrc})`}}>
+                <div id = 'loadingBg'>
+                    <h1>Loading...</h1>
+                </div>
                 <div id = 'ImageScroller' style = {scrollerStyle} onClick = {this.changeImage} title = {"Continue to next image"}>
-                    <div id = 'shuffleButton' onClick = {this.toggleShuffle} style = {shuffleStyle}>
+                    <div id = 'shuffleButton' onClick = {this.toggleShuffle}>
                         <div id = 'shuffleSlider' style = {sliderStyle}></div>
                         {shuffleDiv}
                     </div>
