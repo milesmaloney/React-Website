@@ -15,12 +15,12 @@ export default class Footer extends React.Component {
         this.state = {};
     }
 
-        /*
+    /*
     render() adjusts styles based on the page being displayed and renders the page accordingly
     Parameters:
         None; Uses the divs prop to indicate format and the content prop to indicate what should be displayed
     Returns:
-        None; renders the content within the web browser
+        Content; renders the content to the DOM within the web browser
     */
     render() {
         var leftStyle = {};

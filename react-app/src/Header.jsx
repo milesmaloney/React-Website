@@ -20,9 +20,10 @@ export default class Header extends React.Component {
     Parameters:
         None; Uses the divs prop to indicate format and the content prop to indicate what should be displayed
     Returns:
-        None; renders the content within the web browser
+        Content; renders the content to the DOM within the web browser
     */
     render() {
+        //Initialize the style variables for the three possible divs
         var leftStyle = {};
         var midStyle = {};
         var rightStyle = {};

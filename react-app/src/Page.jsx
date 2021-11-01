@@ -43,9 +43,10 @@ export default class Page extends React.Component {
     Parameters:
         None; Uses the pageType prop to indicate which page should be displayed
     Returns:
-        None; renders the content within the web browser
+        Content; renders the content to the DOM within the web browser
     */
     render() {
+        //Initializes the style variables for the layout components of the page
         var mainStyle = {};
         var sidebarStyle = {};
         var headerStyle = {};
@@ -57,6 +58,7 @@ export default class Page extends React.Component {
             <a href = "#projects"><h3 onClick = {() => this.changeState('projects')} title = "Learn about Miles's projects">Projects</h3></a>,
             <a href = "#aboutme"><h3 onClick = {() => this.changeState('about me')} title = "Learn about Miles's background">About Me</h3></a>
         ];
+        //Renders the content for the home page
         if(this.state.pageType === 'home') {
             mainStyle = {left: '20%', top: '10%', width: '80%', height: '90%'};
             sidebarStyle = {left: '0%', top: '10%', width: '20%', height: '90%', borderRight: '5px groove rgba(0,0,0,1)'};
@@ -73,6 +75,7 @@ export default class Page extends React.Component {
                 </div>
             );
         }
+        //Renders the content for the about me page
         else if(this.state.pageType === 'about me') {
             mainStyle = {left: '20%', top: '10%', height: '90%', width: '80%', backgroundImage: 'url(https://images.pexels.com/photos/956981/milky-way-starry-sky-night-sky-star-956981.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260})', backgroundSize: 'cover', backgroundPosition: 'center'};
             sidebarStyle = {left: '0%', top: '10%', width: '20%', height: '90%'};
@@ -99,6 +102,7 @@ export default class Page extends React.Component {
                 </div>
             );
         }
+        //Renders the content for the projects page
         else if(this.state.pageType === 'projects') {
             mainStyle = {left: '20%', top: '0%', width: '80%', height: '100%', backgroundImage: 'url(https://prod-discovery.edx-cdn.org/media/programs/card_images/e0de6882-c5d1-43f3-99e0-17e386489dca-9c3bda2df48f.jpg)', backgroundSize: 'cover', backgroundPosition: 'left'};
             sidebarStyle = {left: '0%', top: '0%', width: '20%', height: '100%', outline: '2px groove rgba(128, 0, 256, 0.75)'};

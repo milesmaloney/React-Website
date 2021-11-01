@@ -29,9 +29,10 @@ export default class ProjectEntry extends React.Component {
     Parameters:
         None; Uses the title, description, image, and demo props to decide what the format and content should look like
     Returns:
-        None; renders the content within the web browser
+        Content; renders the content to the DOM within the web browser (ProjectEntry will either return a description screen or demo screen as denoted by the demoMode state value)
     */
     render() {
+        //Rendering the description screen
         if(!this.state.demoMode) {
             var demoText = this.props.demo ? <h3>Click <a href = "#projects" rel = "noreferrer" onClick = {this.toggleDemoMode} title = {`View the demo for ${this.props.title}`}>here</a> to view a demo of the {this.props.title} project</h3> : null;
             var descriptionStyle = {top: '20%', left: '0%', height: `${this.props.demo ? '70' : '80'}%`, width: '100%'};
@@ -43,7 +44,6 @@ export default class ProjectEntry extends React.Component {
                     images.push(<div id = "image" style = {{left: `${0 + (widthPerImage * i)}%`, width: `${widthPerImage}%`, backgroundImage: `url(${this.props.imgLinks[i]})`, backgroundSize: 'contain', backgroundPosition: 'center', backgroundRepeat: 'no-repeat'}}></div>)
                 }
             }
-            //The description should use the remainder of the space;
             return (
                 <div id = "projectEntry" style = {this.props.style}>
                     <div id = "images">
@@ -61,6 +61,7 @@ export default class ProjectEntry extends React.Component {
                 </div>
             )
         }
+        //Rendering the demo screen
         else {
             return (
                 <div id = "projectEntry" style = {this.props.style}>
@@ -77,6 +78,13 @@ export default class ProjectEntry extends React.Component {
         }
     }
 
+    /*
+    This function toggles the demo mode on/off for the ProjectEntry that calls it
+    Parameters:
+        None; uses demoMode state variable as parameter
+    Returns:
+        None; updates the demoMode state variable
+    */
     toggleDemoMode() {
         this.state.demoMode ? this.setState({demoMode: false}) : this.setState({demoMode: true});
     }

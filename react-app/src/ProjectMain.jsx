@@ -22,7 +22,7 @@ export default class ProjectMain extends React.Component {
     Parameters:
         None; Uses the listEntries prop to indicate format and what should be displayed
     Returns:
-        None; renders the content within the web browser
+        Content; renders the content to the DOM within the web browser
     */
     render() {
         var heightPerEntry =  50;

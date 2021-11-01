@@ -21,7 +21,7 @@ export default class SidebarEntry extends React.Component {
     Parameters:
         None; Uses the content prop to indicate what should be displayed
     Returns:
-        None; renders the content within the web browser
+        Content; renders the content to the DOM within the web browser
     */
     render() {
         return (
