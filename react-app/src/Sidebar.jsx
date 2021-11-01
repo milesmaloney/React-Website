@@ -23,7 +23,7 @@ export default class Sidebar extends React.Component {
     Parameters:
         None; Uses the content prop to indicate what to display and the length of the prop to indicate styling
     Returns:
-        None; renders the content within the web browser
+        Content; renders the content to the DOM within the web browser
     */
     render() {
         var listElements = [];

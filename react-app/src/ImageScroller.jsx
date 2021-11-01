@@ -23,9 +23,10 @@ export default class ImageScroller extends React.Component {
     Parameters:
         None; Uses the currentPicture and shuffle states to decide the style the ImageScroller should take and the image to be displayed
     Returns:
-        None; renders the content within the web browser
+        Content; renders the content to the DOM within the web browser
     */
     render() {
+        //Define the style variables for the style, slider, and shuffle button based on the shuffle state variable
         var scrollerStyle = {backgroundImage: `url(${this.props.images[this.state.currentPicture]})`};
         var sliderStyle = {backgroundColor: `${this.state.shuffle ? 'rgba(0,0,0,0.5)' : 'rgba(256,256,256,0.5)'}`, left: `${this.state.shuffle ? '80' : '0'}%`};
         var shuffleDiv = null;
@@ -48,12 +49,24 @@ export default class ImageScroller extends React.Component {
 
     }
 
-    /*This function describes what the component should do once it is rendered*/
+    /*
+    This function describes what the component should do once it is rendered
+    Parameters:
+        None; sets an interval for changing images
+    Returns:
+        None; updates imageIntervalID for interval clearing upon unrendering the element
+    */
     componentDidMount() {
         this.imageIntervalID = setInterval(this.changeImage, 3000);
     }
 
-    /*This function describes what the component should do once it is unrendered*/
+    /*
+    This function describes what the component should do once it is unrendered
+    Parameters:
+        None; uses imageIntervalID to clear the interval
+    Returns:
+        None; clears any pending intervals to clear up processing power
+    */
     componentWillUnmount() {
         clearInterval(this.imageIntervalID);
     }

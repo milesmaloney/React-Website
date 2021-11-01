@@ -71,7 +71,13 @@ export default class LocalClock extends React.Component {
         );
     }
 
-    /*This function handles everything that needs to happen once the component is rendered*/
+    /*
+    This function handles everything that needs to happen once the component is rendered
+    Parameters:
+        None; Starts a timer interval to update the clock and calls changeState to begin the interval loop
+    Returns:
+        None; Begins intervals for changing between time and date and updating the datetime variable
+    */
     componentDidMount() {
         //updates time every second
         this.timeIntervalID = setInterval(() => {
@@ -82,7 +88,13 @@ export default class LocalClock extends React.Component {
         this.changeState();
     }
 
-    /*This function handles what should be done when the component is unrendered*/
+    /*
+    This function handles what should be done when the component is unrendered
+    Parameters:
+        None; uses all interval ID's to clear any pending intervals to free up processing power
+    Returns:
+        None; stops any pending intervals
+    */
     componentWillUnmount() {
         clearInterval(this.timeIntervalID);
         clearInterval(this.transitionIntervalID);
