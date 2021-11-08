@@ -28,7 +28,7 @@
 
 #imageScrollerBackground > #loadingBg > h1 {
     pointer-events: none;
-    font-size: 4rem;
+    font-size: 10vw;
     color: rgba(256,256,256,0.6);
     z-index: 0;
     position: absolute;
@@ -57,7 +57,7 @@
 }
 
 #shuffleTexture > h1 {
-    font-size: 18px;
+    font-size: 0.1vw;
     height: 100%;
     width: 100%;
     margin:0%;
@@ -71,7 +71,7 @@
 
 #shuffleTexture > h1:hover {
     opacity: 1;
-    font-size: 24px;
+    font-size: 2vw;
 }
 
 #shuffleTexture > h2 {
