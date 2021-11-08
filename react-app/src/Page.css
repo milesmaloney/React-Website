@@ -19,6 +19,8 @@
     top: 0%;
     height: 100%;
     position: absolute;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 
@@ -36,7 +38,7 @@
     margin-left: 7.5%;
     margin-right: 7.5%;
     font-family: Arial, Helvetica, sans-serif;
-    font-size: 40px;
+    font-size: 2.5vw;
     color:rgb(32, 32, 32);
 }
 
@@ -51,9 +53,4 @@
 
 #aboutMe > p > a:hover {
     color: gold;
-}
-
-a > h3 {
-    font-size: 40px;
-    font-weight: normal;
 }

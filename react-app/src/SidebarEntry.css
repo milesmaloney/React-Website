@@ -22,7 +22,8 @@
 #sidebarEntry > a {
     font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-weight: normal;
-    font-size: 40px;
+    font-size: 4vw;
+    text-decoration: none;
     color: whitesmoke;
 }
 
@@ -37,4 +38,10 @@
 
 #sidebarEntry > a:hover {
     color: whitesmoke;
+}
+
+#sidebarEntry > a > h3 {
+    font-weight: normal;
+    font-size: 4vw;
+    text-decoration: none;
 }
