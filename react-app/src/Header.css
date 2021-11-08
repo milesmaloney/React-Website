@@ -13,26 +13,9 @@
     outline-color: rgb(196,196,256);
 }
 
+
 #headerLeft {
     background-color: rgba(0, 0, 60, 0.66);
-}
-
-#headerMid {
-    background-color: rgba(0, 0, 60, 0.66);
-}
-
-#headerRight {
-    display: flex;
-    justify-content: center;
-    background-color: rgba(0, 0, 60, 0.66);
-}
-
-#headerMid > h1 {
-    padding: 0px;
-    margin: 0px;
-    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    color: aqua;
-    font-size: 5vw;
 }
 
 #headerLeft > h2 {
@@ -43,4 +26,40 @@
     margin: 0px;
     font-family:'Times New Roman', Times, serif;
     color: orange;
+}
+
+
+#headerMid {
+    background-color: rgba(0, 0, 60, 0.66);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#headerMid > h1 {
+    padding: 0px;
+    margin: 0px;
+    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    color: aqua;
+    font-size: 8vw;
+}
+
+
+#headerRight {
+    display: flex;
+    justify-content: center;
+    background-color: rgba(0, 0, 60, 0.66);
+}
+
+#headerRight > #images {
+    height: 100%;
+    width: 100%;
+}
+
+#headerRight > #images > div {
+    top: 0%;
+    height: 100%;
+    position: absolute;
+    background-position: center;
+    background-repeat: no-repeat;
 }

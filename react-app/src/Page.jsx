@@ -34,8 +34,8 @@ export default class Page extends React.Component {
     */
     constructor(props) {
         super(props);
-        this.state = {pageType: this.props.pageType};
-        this.changeState = this.changeState.bind(this);
+        this.state = {pageType: this.props.pageType, orientation: 'portrait'};
+        this.changePageType = this.changePageType.bind(this);
     }
 
     /*
@@ -46,50 +46,47 @@ export default class Page extends React.Component {
         Content; renders the content to the DOM within the web browser
     */
     render() {
-        if(this.props.mobile) {
-            if(this.state.pageType === 'home') {
-                this.getMobileHomePage();
-            }
+        //Initializes the Sidebar content; any additions/changes to the Sidebar should happen here
+        var sidebarContent = [
+            <a href = "#home" onClick = {() => this.changePageType('home')}><h3 title = "Return to home page">Home</h3></a>,
+            <a href = "https://www.linkedin.com/in/miles-maloney-0783051b9/" target = "_blank" rel = "noreferrer" title = "View Miles's LinkedIn profile">LinkedIn</a>,
+            <a href = "https://github.com/milesmaloney" target = "_blank" rel = "noreferrer" title = "View Miles's Github profile">Github</a>,
+            <a href = "#projects" onClick = {() => this.changePageType('projects')}><h3 title = "Learn about Miles's projects">Projects</h3></a>,
+            <a href = "#aboutme" onClick = {() => this.changePageType('about me')}><h3 title = "Learn about Miles's background">About Me</h3></a>
+        ];
+        //Renders the content for the home page
+        if(this.state.pageType === 'home') {
+            return this.props.mobile ? this.getHomePage(sidebarContent, true) : this.getHomePage(sidebarContent);
         }
-        else {
-            //Initializes the Sidebar content; any additions/changes to the Sidebar should happen here
-            var sidebarContent = [
-                <a href = "#home"><h3 onClick = {() => this.changeState('home')} title = "Return to home page">Home</h3></a>,
-                <a href = "https://www.linkedin.com/in/miles-maloney-0783051b9/" target = "_blank" rel = "noreferrer" title = "View Miles's LinkedIn profile">LinkedIn</a>,
-                <a href = "https://github.com/milesmaloney" target = "_blank" rel = "noreferrer" title = "View Miles's Github profile">Github</a>,
-                <a href = "#projects"><h3 onClick = {() => this.changeState('projects')} title = "Learn about Miles's projects">Projects</h3></a>,
-                <a href = "#aboutme"><h3 onClick = {() => this.changeState('about me')} title = "Learn about Miles's background">About Me</h3></a>
-            ];
-            //Renders the content for the home page
-            if(this.state.pageType === 'home') {
-                return this.getHomePage(sidebarContent);
-            }
-            //Renders the content for the about me page
-            else if(this.state.pageType === 'about me') {
-                return this.getAboutMePage(sidebarContent);
-            }
-            //Renders the content for the projects page
-            else if(this.state.pageType === 'projects') {
-                return this.getProjectsPage(sidebarContent);
-            }
+        //Renders the content for the about me page
+        else if(this.state.pageType === 'about me') {
+            return this.props.mobile ? this.getAboutMePage(sidebarContent, true) : this.getAboutMePage(sidebarContent);
+        }
+        //Renders the content for the projects page
+        else if(this.state.pageType === 'projects') {
+            return this.props.mobile ? this.getProjectsPage(sidebarContent, true) : this.getProjectsPage(sidebarContent);
         }
     }
 
+    componentDidMount() {
+        window.addEventListener('orientationchange', this.setOrientation());
+    }
+
+
     getHomePage(sidebarContent, mobile = false) {
-        var mainStyle = {};
-        var headerStyle = {left: '0%', top: '0%', width: '100%', height: '10%'};
         //Initializes the array of image links for the image scroller to iterate through
         var images = [img0,img1,img2,img3,img4,img5];
-        if(mobile) {
-            mainStyle = {left: '0%', top: '15%', width: '100%', height: '80%'};
-            var footerStyle = {left: '0%', bottom: '0%', width: '100%', height: '10%'};
+        var mainStyle = {};
+        var headerStyle = {left: '0%', top: '0%', width: '100%', height: '10%'};
+        if(this.props.mobile) {
+            mainStyle = {left: '0%', top: '10%', width: '100%', height: '80%'};
             return (
                 <div id = "page">
-                    <Header divs = {[1,1,0]} content = {[<LocalClock mobile = {true}/>, <h1 onClick = {() => this.changeState('about me')}>Miles Maloney</h1>]} style = {headerStyle}/>
+                    <Header divs = {[1,1,0]} content = {[<LocalClock fontSize = '3vw'/>, <h1 onClick = {() => this.changePageType('about me')}>Miles Maloney</h1>]} style = {headerStyle}/>
                     <div id = "main" style = {mainStyle}>
-                        <ImageScroller shuffle = {0} images = {images} brSrc = {'https://images.pexels.com/photos/956981/milky-way-starry-sky-night-sky-star-956981.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260'}/>
+                        <ImageScroller shuffle = {0} images = {images} bgSrc = {'https://images.pexels.com/photos/956981/milky-way-starry-sky-night-sky-star-956981.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260'}/>
                     </div>
-                    <Footer divs = {[1,0,0]} content = {sidebarContent} style = {footerStyle}/>
+                    <Footer divs = {[0,0,1]} content = {[sidebarContent]}/>
                 </div>
             )
         }
@@ -98,7 +95,7 @@ export default class Page extends React.Component {
             var sidebarStyle = {left: '0%', top: '10%', width: '20%', height: '90%', borderRight: '5px groove rgba(0,0,0,1)'};
             return (
                 <div id = "page">
-                    <Header divs = {[1,1,0]} content = {[<LocalClock/>, <h1 onClick = {() => this.changeState('about me')}>Miles Maloney</h1>]} style = {headerStyle}/>
+                    <Header divs = {[1,1,0]} content = {[<LocalClock fontSize = '3vw'/>, <h1 style = {{fontSize: '6vw'}} onClick = {() => this.changePageType('about me')}>Miles Maloney</h1>]} style = {headerStyle}/>
                     <Sidebar content = {sidebarContent} style = {sidebarStyle}/>
                     <div id = "main" style = {mainStyle}>
                         <ImageScroller shuffle = {0} images = {images} bgSrc = {'https://images.pexels.com/photos/956981/milky-way-starry-sky-night-sky-star-956981.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260'}/>
@@ -108,13 +105,14 @@ export default class Page extends React.Component {
         }
     }
 
-    getAboutMePage(sidebarContent) {
+
+    getAboutMePage(sidebarContent, mobile = false) {
         var mainStyle = {left: '20%', top: '10%', height: '90%', width: '80%', backgroundImage: 'url(https://images.pexels.com/photos/956981/milky-way-starry-sky-night-sky-star-956981.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260})', backgroundSize: 'cover', backgroundPosition: 'center'};
         var sidebarStyle = {left: '0%', top: '10%', width: '20%', height: '90%'};
         var headerStyle = {left: '0%', top: '0%', width: '100%', height: '10%'};
         //Initializes the content for the about me section; any additions/changes to the About Me page should happen here
         var aboutMeContent = [
-            <p>{'\t'}Hello! My name is Miles Maloney, and I am a recent graduate (May 2021) of the B.S. Computer Science program at University of San Diego with a major in Computer Science and a minor in Theatre Arts. This website is a hub for you to find everything you might want to learn about my background as a software engineer. You can click the embedded links or the links in the sidebar to view my {<a href = "https://www.linkedin.com/in/miles-maloney-0783051b9/" target = "_blank" rel = "noreferrer" title = "View Miles's LinkedIn profile">LinkedIn</a>} and {<a href = "https://github.com/milesmaloney" target = "_blank" rel = "noreferrer" title = "View Miles's Github profile">Github</a>} profiles as well as visit the {<a href = "#projects" onClick = {() => this.changeState('projects')} title = "Learn about Miles's projects">projects</a>} page to check out some of the projects I have worked on. I hope you have a nice day!</p>
+            <p>{'\t'}Hello! My name is Miles Maloney, and I am a recent graduate (May 2021) of the B.S. Computer Science program at University of San Diego with a major in Computer Science and a minor in Theatre Arts. This website is a hub for you to find everything you might want to learn about my background as a software engineer. You can click the embedded links or the links in the sidebar to view my {<a href = "https://www.linkedin.com/in/miles-maloney-0783051b9/" target = "_blank" rel = "noreferrer" title = "View Miles's LinkedIn profile">LinkedIn</a>} and {<a href = "https://github.com/milesmaloney" target = "_blank" rel = "noreferrer" title = "View Miles's Github profile">Github</a>} profiles as well as visit the {<a href = "#projects" onClick = {() => this.changePageType('projects')} title = "Learn about Miles's projects">projects</a>} page to check out some of the projects I have worked on. I hope you have a nice day!</p>
         ];
         var headerRightContent = [
             <div id = "images">
@@ -124,7 +122,7 @@ export default class Page extends React.Component {
         ];
         return (
             <div id = "page">
-                <Header divs = {[1,1,1]} content = {[<LocalClock/>, <h1 onClick = {() => this.changeState('about me')}>Miles Maloney</h1>, headerRightContent[0]]} style = {headerStyle}/>
+                <Header divs = {[1,1,1]} content = {[<LocalClock fontSize = '3vw'/>, <h1 style = {{fontSize: '5.5vw'}} onClick = {() => this.changePageType('about me')}>Miles Maloney</h1>, headerRightContent[0]]} style = {headerStyle}/>
                 <Sidebar content = {sidebarContent} style = {sidebarStyle}/>
                 <div id = "main" style = {mainStyle}>
                     <div id = "aboutMe">
@@ -135,7 +133,8 @@ export default class Page extends React.Component {
         );
     }
 
-    getProjectsPage(sidebarContent) {
+
+    getProjectsPage(sidebarContent, mobile = false) {
         var mainStyle = {left: '20%', top: '0%', width: '80%', height: '100%', backgroundImage: 'url(https://prod-discovery.edx-cdn.org/media/programs/card_images/e0de6882-c5d1-43f3-99e0-17e386489dca-9c3bda2df48f.jpg)', backgroundSize: 'cover', backgroundPosition: 'left'};
         var sidebarStyle = {left: '0%', top: '0%', width: '20%', height: '100%', outline: '2px groove rgba(128, 0, 256, 0.75)'};
         //Initializes the project list entries; any additions/changes to ProjectMain should happen here
@@ -155,13 +154,13 @@ export default class Page extends React.Component {
     }
 
     /*
-    changeState() handles transitions between pages (e.g. moving from home page to about me page)
+    changePageType() handles transitions between pages (e.g. moving from home page to about me page)
     Parameters:
         newState: The state to be transitioned to
     Returns:
         None; changes the state.pageType value to the pageType specified by newState
     */
-    changeState(newState) {
+    changePageType(newState) {
         switch(newState) {
             case 'home':
                 this.setState({pageType: 'home'});
@@ -175,5 +174,9 @@ export default class Page extends React.Component {
             default:
                 break;
         }
+    }
+
+    setOrientation() {
+        window.matchMedia("(orientation: portrait)").matches ? this.setState({orientation: 'portrait'}) : this.setState({orientation: 'landscape'});
     }
 }

@@ -118,7 +118,7 @@
 #returnText > h3 {
     margin: 0%;
     padding: 0%;
-    font-size: 1.5vw;
+    font-size: 2vw;
     color: azure;
     bottom : 0%;
     position: relative;
@@ -150,7 +150,7 @@
 #description > h3 {
     margin: 0%;
     padding: 0%;
-    font-size: 1.5vw;
+    font-size: 2vw;
     color:azure;
 }
 
