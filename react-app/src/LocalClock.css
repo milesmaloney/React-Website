@@ -12,9 +12,13 @@
     width: 100%;
 }
 
+#digitOne {
+    display: flex;
+    align-items: center;
+}
+
 #digitOne > h4 { 
     font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    font-size: 3vw;
     color: white;
     margin: 0%;
     transition: color 180ms;
@@ -24,9 +28,14 @@
     color: rgb(256, 0, 0);
 }
 
+
+#digitTwo {
+    display: flex;
+    align-items: center;
+}
+
 #digitTwo > h4 { 
     font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    font-size: 3vw;
     color: white;
     margin: 0%;
     transition: color 180ms;
@@ -37,9 +46,13 @@
 }
 
 
+#digitThree {
+    display: flex;
+    align-items: center;
+}
+
 #digitThree > h4 { 
     font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    font-size: 3vw;
     color: white;
     margin: 0%;
     transition: color 180ms;
@@ -50,9 +63,13 @@
 }
 
 
+#digitFour {
+    display: flex;
+    align-items: center;
+}
+
 #digitFour > h4 { 
     font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    font-size: 3vw;
     color: white;
     margin: 0%;
     transition: color 180ms;
@@ -63,9 +80,13 @@
 }
 
 
+#digitFive {
+    display: flex;
+    align-items: center;
+}
+
 #digitFive > h4 { 
     font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    font-size: 3vw;
     color: white;
     margin: 0%;
     transition: color 180ms;
@@ -75,9 +96,14 @@
     color: rgb(0, 256, 0);
 }
 
+
+#digitSix {
+    display: flex;
+    align-items: center;
+}
+
 #digitSix > h4 { 
     font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    font-size: 3vw;
     color: white;
     margin: 0%;
     transition: color 180ms;
@@ -87,9 +113,14 @@
     color: rgb(0, 256, 256);
 }
 
+
+#digitSeven {
+    display: flex;
+    align-items: center;
+}
+
 #digitSeven > h4 { 
     font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    font-size: 3vw;
     color: white;
     margin: 0%;
     transition: color 180ms;
@@ -99,9 +130,14 @@
     color: rgb(0, 0, 256);
 }
 
+
+#digitEight {
+    display: flex;
+    align-items: center;
+}
+
 #digitEight > h4 { 
     font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    font-size: 3vw;
     color: white;
     margin: 0%;
     transition: color 180ms;
@@ -111,9 +147,14 @@
     color: rgb(128, 0, 256);
 }
 
+
+#digitNine {
+    display: flex;
+    align-items: center;
+}
+
 #digitNine > h4 { 
     font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    font-size: 3vw;
     color: white;
     margin: 0%;
     transition: color 180ms;
@@ -123,9 +164,14 @@
     color: rgb(190, 0, 256);
 }
 
+
+#digitTen {
+    display: flex;
+    align-items: center;
+}
+
 #digitTen > h4 { 
     font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    font-size: 3vw;
     color: white;
     margin: 0%;
     transition: color 180ms;

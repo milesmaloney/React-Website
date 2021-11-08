@@ -75,7 +75,7 @@
 }
 
 #shuffleTexture > h2 {
-    font-size: 18px;
+    font-size: 0.1vw;
     height: 100%;
     width: 100%;
     margin: 0%;
@@ -88,7 +88,7 @@
 
 #shuffleTexture > h2:hover {
     opacity: 1;
-    font-size: 24px;
+    font-size: 2vw;
 }
 
 #shuffleSlider {

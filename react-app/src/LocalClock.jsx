@@ -22,7 +22,7 @@ export default class LocalClock extends React.Component {
         //Populates the digitStyles with positioning for each digit in relation to the others
         var digitStyles = [];
         for(var i = 0; i < 10; i++) {
-            digitStyles.push({top: '15%', left: `${0 + i * 6}%`, height: '100%', width: '7.5%', position: 'absolute'});
+            digitStyles.push({bottom: '0%', left: `${0 + i * 6}%`, height: '100%', width: '7.5%', position: 'absolute', fontSize: `${this.props.fontSize}`});
         }
         //Rounds out any single-digit values and adds leading 0's for consistency
         var digitPairs = (this.state.timeOrDate === 'time' ? this.state.date.toLocaleTimeString().replace(" ","").split(":") : this.state.date.toLocaleDateString().split("/"))

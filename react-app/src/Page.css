@@ -7,20 +7,16 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    position: absolute;
     overflow: auto;
 }
 
-#headerRight > #images {
-    height: 100%;
+#main > #footer {
+    bottom: 0%;
+    left: 0%;
     width: 100%;
-}
-
-#headerRight > #images > div {
-    top: 0%;
-    height: 100%;
+    height: 10%;
     position: absolute;
-    background-position: center;
-    background-repeat: no-repeat;
 }
 
 

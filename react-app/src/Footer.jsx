@@ -108,9 +108,16 @@ export default class Footer extends React.Component {
     
         /*Base Case: Either no extra divs or only one (Would span the entire footer) */
         else {
+            var footerElements = [];
+            var widthPerElement = 100 / this.props.content[0].length;
+            for(var i = 0; i < this.props.content[0].length; i++) {
+                footerElements.push(<li key = {i} style = {{left: `${0 + (widthPerElement * i)}%`, width: `${widthPerElement}%`}}>{this.props.content[0][i]}</li>)
+            }
             return (
                 <div id = "footer" style = {this.props.style}>
-                    {this.props.content[0]}
+                    <ul>
+                        {footerElements}
+                    </ul>
                 </div>
             );
         }
