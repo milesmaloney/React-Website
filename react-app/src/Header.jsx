@@ -87,8 +87,8 @@ export default class Header extends React.Component {
         else if(this.props.divs[1]) {
             /*Header contains only a middle and right div (right corner and single left-mid section)*/
             if(this.props.divs[2]) {
-                midStyle = {left: '0%', width: '67%', height: '100%', position: 'absolute'}
-                rightStyle = {left: '67%', width: '33%', height: '100%', position: 'absolute'}
+                midStyle = {left: '0%', width: '67%', height: '100%', position: 'absolute'};
+                rightStyle = {left: '67%', width: '33%', height: '100%', position: 'absolute'};
                 return (
                     <div id = "header" style = {this.props.style}>
                         <div id = "headerMid" style = {midStyle}>
@@ -106,9 +106,12 @@ export default class Header extends React.Component {
         /*Else header contains only a right div (This is handled by the base case) */
         /*Base Case: Either no extra divs or only one (Would span the entire header) */
         else {
+            midStyle = {left: '0%', width: '100%', height: '100%', position: 'absolute'};
             return (
                 <div id = "header" style = {this.props.style}>
-                    {this.props.content[0]}
+                    <div id = "headerMid" style = {midStyle}>
+                        {this.props.content[0]}
+                    </div>
                 </div>
             );
         }
