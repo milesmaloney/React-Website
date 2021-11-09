@@ -107,12 +107,12 @@ export default class Page extends React.Component {
 
 
     getAboutMePage(sidebarContent, mobile = false) {
-        console.log(sidebarContent);
         var mainStyle = {}
         var headerStyle = {left: '0%', top: '0%', width: '100%', height: '10%'};
         //Initializes the content for the about me section; any additions/changes to the About Me page should happen here
+        var pStyle = this.props.mobile ? {fontSize: '4vw'} : {};
         var aboutMeContent = [
-            <p>{'\t'}Hello! My name is Miles Maloney, and I am a recent graduate (May 2021) of the B.S. Computer Science program at University of San Diego with a major in Computer Science and a minor in Theatre Arts. This website is a hub for you to find everything you might want to learn about my background as a software engineer. You can click the embedded links or the links in the sidebar to view my {<a href = "https://www.linkedin.com/in/miles-maloney-0783051b9/" target = "_blank" rel = "noreferrer" title = "View Miles's LinkedIn profile">LinkedIn</a>} and {<a href = "https://github.com/milesmaloney" target = "_blank" rel = "noreferrer" title = "View Miles's Github profile">Github</a>} profiles as well as visit the {<a href = "#projects" onClick = {() => this.changePageType('projects')} title = "Learn about Miles's projects">projects</a>} page to check out some of the projects I have worked on. I hope you have a nice day!</p>
+            <p style = {pStyle}>{'\t'}Hello! My name is Miles Maloney, and I am a recent graduate (May 2021) of the B.S. Computer Science program at University of San Diego with a major in Computer Science and a minor in Theatre Arts. This website is a hub for you to find everything you might want to learn about my background as a software engineer. You can click the embedded links or the links in the sidebar to view my {<a href = "https://www.linkedin.com/in/miles-maloney-0783051b9/" target = "_blank" rel = "noreferrer" title = "View Miles's LinkedIn profile">LinkedIn</a>} and {<a href = "https://github.com/milesmaloney" target = "_blank" rel = "noreferrer" title = "View Miles's Github profile">Github</a>} profiles as well as visit the {<a href = "#projects" onClick = {() => this.changePageType('projects')} title = "Learn about Miles's projects">projects</a>} page to check out some of the projects I have worked on. I hope you have a nice day!</p>
         ];
         var headerRightContent = [
             <div id = "images">
@@ -121,7 +121,7 @@ export default class Page extends React.Component {
             </div>
         ];
         if(this.props.mobile) {
-            mainStyle = {left: '0%', top: '10%', height: '80%', width: '100%', backgroundImage: 'url(https://images.pexels.com/photos/956981/milky-way-starry-sky-night-sky-star-956981.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260})', backgroundSize: 'cover', backgroundPosition: 'center'};
+            mainStyle = {left: '0%', top: '10%', height: '80%', width: '100%'};
             return (
                 <div id = "page">
                     <Header divs = {[1,1,1]} content = {[<LocalClock fontSize = '3vw'/>, <h1 style = {{fontSize: '5.5vw'}} onClick = {() => this.changePageType('about me')}>Miles Maloney</h1>, headerRightContent[0]]} style = {headerStyle}/>
@@ -135,7 +135,7 @@ export default class Page extends React.Component {
             )
         }
         else {
-            mainStyle = {left: '20%', top: '10%', height: '90%', width: '80%', backgroundImage: 'url(https://images.pexels.com/photos/956981/milky-way-starry-sky-night-sky-star-956981.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260})', backgroundSize: 'cover', backgroundPosition: 'center'};
+            mainStyle = {left: '20%', top: '10%', height: '90%', width: '80%'};
             var sidebarStyle = {left: '0%', top: '10%', width: '20%', height: '90%'};
             return (
                 <div id = "page">
@@ -165,7 +165,7 @@ export default class Page extends React.Component {
             var headerStyle = {left: '0%', top: '0%', width: '100%', height: '10%'};
             return (
                 <div id = "page">
-                    <Header divs = {[1,1,0]} content = {[<LocalClock fontSize = '3vw'/>, <h1>Miles Maloney</h1>]} style = {headerStyle}/>
+                    <Header divs = {[0,0,1]} content = {[<h1>Projects</h1>]} style = {headerStyle}/>
                     <div id = "main" style = {mainStyle}>
                         <ProjectMain listEntries = {projectList}/>
                     </div>
