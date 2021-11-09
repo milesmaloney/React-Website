@@ -1,5 +1,7 @@
 #footer {
-  background-color: rgba(128, 128, 128, 0.5);
+  background-image: url('https://images.pexels.com/photos/956981/milky-way-starry-sky-night-sky-star-956981.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260');
+  background-size: cover;
+  background-position: center;
   height: 10%;
   width: 100%;
   bottom: 0%;
@@ -13,6 +15,7 @@
 }
 
 #footer > ul > li {
+  background-color: rgba(0,0,0,0.5);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -36,11 +39,11 @@
 }
 
 #footer > ul > li > a:link {
-  color: blue;
+  color: white;
 }
 
 #footer > ul > li > a:visited {
-  color: darkblue;
+  color: lightslategray;
 }
 
 #footer > ul > li > a > h3 {

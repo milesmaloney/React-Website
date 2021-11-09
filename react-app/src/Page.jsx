@@ -107,8 +107,8 @@ export default class Page extends React.Component {
 
 
     getAboutMePage(sidebarContent, mobile = false) {
-        var mainStyle = {left: '20%', top: '10%', height: '90%', width: '80%', backgroundImage: 'url(https://images.pexels.com/photos/956981/milky-way-starry-sky-night-sky-star-956981.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260})', backgroundSize: 'cover', backgroundPosition: 'center'};
-        var sidebarStyle = {left: '0%', top: '10%', width: '20%', height: '90%'};
+        console.log(sidebarContent);
+        var mainStyle = {}
         var headerStyle = {left: '0%', top: '0%', width: '100%', height: '10%'};
         //Initializes the content for the about me section; any additions/changes to the About Me page should happen here
         var aboutMeContent = [
@@ -120,37 +120,71 @@ export default class Page extends React.Component {
                 <div style = {{right: '35%', width: '25%', backgroundImage: 'url(https://www.sandiego.edu/assets/global/images/logos/usd-logo-stacked-inverse.png)', backgroundSize: 'contain'}}></div>
             </div>
         ];
-        return (
-            <div id = "page">
-                <Header divs = {[1,1,1]} content = {[<LocalClock fontSize = '3vw'/>, <h1 style = {{fontSize: '5.5vw'}} onClick = {() => this.changePageType('about me')}>Miles Maloney</h1>, headerRightContent[0]]} style = {headerStyle}/>
-                <Sidebar content = {sidebarContent} style = {sidebarStyle}/>
-                <div id = "main" style = {mainStyle}>
-                    <div id = "aboutMe">
-                        {aboutMeContent}
+        if(this.props.mobile) {
+            mainStyle = {left: '0%', top: '10%', height: '80%', width: '100%', backgroundImage: 'url(https://images.pexels.com/photos/956981/milky-way-starry-sky-night-sky-star-956981.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260})', backgroundSize: 'cover', backgroundPosition: 'center'};
+            return (
+                <div id = "page">
+                    <Header divs = {[1,1,1]} content = {[<LocalClock fontSize = '3vw'/>, <h1 style = {{fontSize: '5.5vw'}} onClick = {() => this.changePageType('about me')}>Miles Maloney</h1>, headerRightContent[0]]} style = {headerStyle}/>
+                    <div id = "main" style = {mainStyle}>
+                        <div id = "aboutMe">
+                            {aboutMeContent}
+                        </div>
+                    </div>
+                    <Footer divs = {[0,0,1]} content = {[sidebarContent]}/>
+                </div>
+            )
+        }
+        else {
+            mainStyle = {left: '20%', top: '10%', height: '90%', width: '80%', backgroundImage: 'url(https://images.pexels.com/photos/956981/milky-way-starry-sky-night-sky-star-956981.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260})', backgroundSize: 'cover', backgroundPosition: 'center'};
+            var sidebarStyle = {left: '0%', top: '10%', width: '20%', height: '90%'};
+            return (
+                <div id = "page">
+                    <Header divs = {[1,1,1]} content = {[<LocalClock fontSize = '3vw'/>, <h1 style = {{fontSize: '5.5vw'}} onClick = {() => this.changePageType('about me')}>Miles Maloney</h1>, headerRightContent[0]]} style = {headerStyle}/>
+                    <Sidebar content = {sidebarContent} style = {sidebarStyle}/>
+                    <div id = "main" style = {mainStyle}>
+                        <div id = "aboutMe">
+                            {aboutMeContent}
+                        </div>
                     </div>
                 </div>
-            </div>
-        );
+            );
+        }
     }
 
 
     getProjectsPage(sidebarContent, mobile = false) {
-        var mainStyle = {left: '20%', top: '0%', width: '80%', height: '100%', backgroundImage: 'url(https://prod-discovery.edx-cdn.org/media/programs/card_images/e0de6882-c5d1-43f3-99e0-17e386489dca-9c3bda2df48f.jpg)', backgroundSize: 'cover', backgroundPosition: 'left'};
-        var sidebarStyle = {left: '0%', top: '0%', width: '20%', height: '100%', outline: '2px groove rgba(128, 0, 256, 0.75)'};
+        var mainStyle = {};
         //Initializes the project list entries; any additions/changes to ProjectMain should happen here
         var projectList = [
             {title: 'Cubic Voice AI', srcLink: 'https://github.com/milesmaloney/virtual-ticket-agent', demo: <iframe width="100%" height="98%" src="https://www.youtube.com/embed/_1iAEM2Z0rE" title="Cubic Voice AI Demo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>, imgLinks: ['https://mycroft.ai/wp-content/uploads/2018/01/Mycroft-Logo-Square-Web-thumb.png', 'https://www.sandiego.edu/assets/global/images/logos/usd-logo-stacked-inverse.png', 'https://www.servicenow.com/content/dam/servicenow/images/customers-asset/details/logo/logo-cubic-transportation.png.imgw.720.720.jpg'], description: '\tIn this industry-sponsored project, three fellow students from University of San Diego and I created a conversational ticket agent using natural language processing engine Mycroft AI. This virtual ticket agent was built in Python on Raspberry Pi hardware, and used SQLite3 for database purposes. It has the functionalities of creating an account, buying a pass, routing you to your destination via transit, and checking your account balance.'},
             {title: 'Turn-based Game', srcLink: 'https://github.com/milesmaloney/Game-Builder', demo: <h1>{'\t'}The demo for this project is currently unavailable due to an in-progress conversion from a command line interface to a React.js interface. In the meantime, you can run this project through the command line by following the instructions in the <a href = 'https://github.com/milesmaloney/Game-Builder' target = "_blank" rel = "noreferrer">source code repository</a>'s README file.</h1> , imgLinks: [allyWardenImg, allyWarriorImg, playerArcaneMageImg, enemySkeletonImg, enemyCultistImg], description: '\tIn this javascript project, I decided to create a game in order to further develop my programming skills and learn more about javascript. This turn-based game allows a user to select a name and class and battle alongside AI allies against AI enemies. I plan to include a demo when I am finished making the game compatible with React. In the meantime, you may view the source code by clicking the title and run the game from the command line if you\'d like.'},
             {title: 'React Portfolio Website', srcLink: 'https://github.com/milesmaloney/React-Website', demo: <h1>{'\t'}You are currently browsing the React Portfolio Website project. To view its functionalities in more detail, you can explore the website and see what happens when you click or hover on each and every part of the site.</h1>, imgLinks: ['https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/1280px-React-icon.svg.png', siteImg] , description: '\tI created this React website in response to the surprising amount of demand for web developers in the current job market. I found that this project was very helpful in understanding front-end technologies and the challenges that come with them, as well as the surprising convenience of many features of React. You are currently viewing this exact website, which was built from scratch using React.js.'},
         ];
-        return (
-            <div id = "page">
-                <Sidebar content = {sidebarContent} style = {sidebarStyle}/>
-                <div id = "main" style = {mainStyle}>
-                    <ProjectMain listEntries = {projectList}/>
+        if(this.props.mobile) {
+            mainStyle = {left: '0%', top: '10%', width: '100%', height: '80%', backgroundImage: 'url(https://prod-discovery.edx-cdn.org/media/programs/card_images/e0de6882-c5d1-43f3-99e0-17e386489dca-9c3bda2df48f.jpg)', backgroundSize: 'cover', backgroundPosition: 'left'};
+            var headerStyle = {left: '0%', top: '0%', width: '100%', height: '10%'};
+            return (
+                <div id = "page">
+                    <Header divs = {[1,1,0]} content = {[<LocalClock fontSize = '3vw'/>, <h1>Miles Maloney</h1>]} style = {headerStyle}/>
+                    <div id = "main" style = {mainStyle}>
+                        <ProjectMain listEntries = {projectList}/>
+                    </div>
+                    <Footer divs = {[0,0,1]} content = {[sidebarContent]}/>
                 </div>
-            </div>
-        );
+            )            
+        }
+        else {
+            mainStyle = {left: '20%', top: '0%', width: '80%', height: '100%', backgroundImage: 'url(https://prod-discovery.edx-cdn.org/media/programs/card_images/e0de6882-c5d1-43f3-99e0-17e386489dca-9c3bda2df48f.jpg)', backgroundSize: 'cover', backgroundPosition: 'left'};
+            var sidebarStyle = {left: '0%', top: '0%', width: '20%', height: '100%', outline: '2px groove rgba(128, 0, 256, 0.75)'};
+            return (
+                <div id = "page">
+                    <Sidebar content = {sidebarContent} style = {sidebarStyle}/>
+                    <div id = "main" style = {mainStyle}>
+                        <ProjectMain listEntries = {projectList}/>
+                    </div>
+                </div>
+            );
+        }
     }
 
     /*
