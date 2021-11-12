@@ -34,14 +34,14 @@ export default class ProjectEntry extends React.Component {
     render() {
         //Rendering the description screen
         if(!this.state.demoMode) {
-            var demoText = this.props.demo ? <h3>Click <a href = "#projects" rel = "noreferrer" onClick = {this.toggleDemoMode} title = {`View the demo for ${this.props.title}`}>here</a> to view a demo of the {this.props.title} project</h3> : null;
+            var demoText = this.props.demo ? <h3 style = {{fontSize: `${this.props.mobile ? `${this.props.orientation === 'portrait' ? '3vw' : '1.5vw'}` : '2vw'}`}}>Click <a href = "#projects" rel = "noreferrer" onClick = {this.toggleDemoMode} title = {`View the demo for ${this.props.title}`}>here</a> to view a demo of the {this.props.title} project</h3> : null;
             var descriptionStyle = {top: '20%', left: '0%', height: `${this.props.demo ? '70' : '80'}%`, width: '100%'};
             var demoTextStyle = this.props.demo ? {bottom: '0%', left: '0%', height: '10%', width: '100%'} : {height: '0%', width: '0%'};
             var images = [];
             if(this.props.imgLinks) {
                 var widthPerImage = 100 / this.props.imgLinks.length;
                 for(var i = 0; i < this.props.imgLinks.length; i++) {
-                    images.push(<div id = "image" style = {{left: `${0 + (widthPerImage * i)}%`, width: `${widthPerImage}%`, backgroundImage: `url(${this.props.imgLinks[i]})`, backgroundSize: 'contain', backgroundPosition: 'center', backgroundRepeat: 'no-repeat'}}></div>)
+                    images.push(<div id = "image" key = {i} style = {{left: `${0 + (widthPerImage * i)}%`, width: `${widthPerImage}%`, backgroundImage: `url(${this.props.imgLinks[i]})`, backgroundSize: 'contain', backgroundPosition: 'center', backgroundRepeat: 'no-repeat'}}></div>)
                 }
             }
             return (
@@ -50,10 +50,10 @@ export default class ProjectEntry extends React.Component {
                         {images}
                     </div>
                     <div id = "title">
-                        <h1 title = {`View source code for ${this.props.title}`}><a href = {this.props.srcLink} target = "_blank" rel = "noreferrer">{this.props.title}</a></h1>
+                        <h1 title = {`View source code for ${this.props.title}`}><a style = {{fontSize: `${this.props.mobile ? `${this.props.orientation === 'portrait' ? '6vw' : '4vw'}` : '4vw'}`}} href = {this.props.srcLink} target = "_blank" rel = "noreferrer">{this.props.title}</a></h1>
                     </div>
                     <div id = "description" style = {descriptionStyle}>
-                        <h3>{this.props.description}</h3>
+                        <h3 style = {{fontSize: `${this.props.mobile ? `${this.props.orientation === 'portrait' ? '4vw' : '1.5vw'}` : '2.5vw'}`}}>{this.props.description}</h3>
                     </div>
                     <div id = "demoText" style = {demoTextStyle}>
                         {demoText}
@@ -70,7 +70,7 @@ export default class ProjectEntry extends React.Component {
                             {this.props.demo}
                         </div>
                         <div id = "returnText">
-                            <h3>Click <a href = "#projects" rel = "noreferrer" onClick = {this.toggleDemoMode} title = {`Return to the description for ${this.props.title}`}>here</a> to return to the description of {this.props.title}</h3>
+                            <h3 style = {{fontSize: `${this.props.mobile ? `${this.props.orientation === 'portrait' ? '3vw' : '1.5vw'}` : '2vw'}`}}>Click <a href = "#projects" rel = "noreferrer" onClick = {this.toggleDemoMode} title = {`Return to the description for ${this.props.title}`}>here</a> to return to the description of {this.props.title}</h3>
                         </div>
                     </div>
                 </div>

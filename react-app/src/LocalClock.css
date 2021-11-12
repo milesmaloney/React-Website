@@ -14,7 +14,8 @@
 
 #digitOne {
     display: flex;
-    align-items: center;
+    align-items: center; 
+    justify-content: center;
 }
 
 #digitOne > h4 { 
@@ -31,7 +32,8 @@
 
 #digitTwo {
     display: flex;
-    align-items: center;
+    align-items: center; 
+    justify-content: center;
 }
 
 #digitTwo > h4 { 
@@ -48,7 +50,8 @@
 
 #digitThree {
     display: flex;
-    align-items: center;
+    align-items: center; 
+    justify-content: center;
 }
 
 #digitThree > h4 { 
@@ -65,7 +68,8 @@
 
 #digitFour {
     display: flex;
-    align-items: center;
+    align-items: center; 
+    justify-content: center;
 }
 
 #digitFour > h4 { 
@@ -82,7 +86,8 @@
 
 #digitFive {
     display: flex;
-    align-items: center;
+    align-items: center; 
+    justify-content: center;
 }
 
 #digitFive > h4 { 
@@ -99,7 +104,8 @@
 
 #digitSix {
     display: flex;
-    align-items: center;
+    align-items: center; 
+    justify-content: center;
 }
 
 #digitSix > h4 { 
@@ -116,7 +122,8 @@
 
 #digitSeven {
     display: flex;
-    align-items: center;
+    align-items: center; 
+    justify-content: center;
 }
 
 #digitSeven > h4 { 
@@ -133,7 +140,8 @@
 
 #digitEight {
     display: flex;
-    align-items: center;
+    align-items: center; 
+    justify-content: center;
 }
 
 #digitEight > h4 { 
@@ -151,6 +159,7 @@
 #digitNine {
     display: flex;
     align-items: center;
+    justify-content: center;
 }
 
 #digitNine > h4 { 
@@ -167,7 +176,8 @@
 
 #digitTen {
     display: flex;
-    align-items: center;
+    align-items: center; 
+    justify-content: center;
 }
 
 #digitTen > h4 { 

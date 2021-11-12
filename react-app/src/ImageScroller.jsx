@@ -27,7 +27,7 @@ export default class ImageScroller extends React.Component {
     */
     render() {
         //Define the style variables for the style, slider, and shuffle button based on the shuffle state variable
-        var scrollerStyle = {backgroundImage: `url(${this.props.images[this.state.currentPicture]})`};
+        var scrollerStyle = {backgroundImage: `url(${this.props.images[this.state.currentPicture]})`, backgroundSize: `${this.props.mobile ? 'contain' : 'cover'}`};
         var sliderStyle = {backgroundColor: `${this.state.shuffle ? 'rgba(0,0,0,0.5)' : 'rgba(256,256,256,0.5)'}`, left: `${this.state.shuffle ? '80' : '0'}%`};
         var shuffleDiv = null;
         var shuffleTexture = {};
@@ -81,6 +81,8 @@ export default class ImageScroller extends React.Component {
     */
     changeImage() {
         var newImage = this.state.shuffle ? Math.floor(Math.random() * this.props.images.length) : (this.state.currentPicture  === this.props.images.length - 1 ? 0 : this.state.currentPicture + 1);
+        //The first image exposes the loading screen while showing in landscape orientation, so I have decided to skip it in this scenario (add 1 to the picture index)
+        newImage += (newImage === 0 && this.props.mobile && this.props.orientation === 'landscape' ? 1 : 0);
         this.setState({ currentPicture: newImage});
         clearInterval(this.imageIntervalID);
         this.imageIntervalID = setInterval(this.changeImage, 3000);

@@ -1,8 +1,8 @@
 #ImageScroller {
     height: 100%;
     width: 100%;
-    background-size: cover;
     background-position: center;
+    background-repeat: no-repeat;
     z-index: 1;
     position: absolute;
 }
