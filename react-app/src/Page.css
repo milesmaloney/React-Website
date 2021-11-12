@@ -9,6 +9,9 @@
     justify-content: center;
     position: absolute;
     overflow: auto;
+    text-align: center;
+    vertical-align: center;
+    margin: 0%;
 }
 
 #main > #footer {

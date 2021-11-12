@@ -30,7 +30,7 @@ export default class ProjectMain extends React.Component {
         //Populates listEntries with corresponding list elements with partitioned styles for each entry
         for(var i = 0; i < this.props.listEntries.length; i++) {
             var currStyle = {top: `${0 + (heightPerEntry * i)}%`, left: '0%', height: `${heightPerEntry}%`, width: '100%', position: 'absolute'};
-            listEntries.push(<li key = {i}><ProjectEntry title = {this.props.listEntries[i].title} srcLink = {this.props.listEntries[i].srcLink} demo = {this.props.listEntries[i].demo} imgLinks = {this.props.listEntries[i].imgLinks} description = {this.props.listEntries[i].description} style = {currStyle} /></li>)
+            listEntries.push(<li key = {i}><ProjectEntry title = {this.props.listEntries[i].title} srcLink = {this.props.listEntries[i].srcLink} demo = {this.props.listEntries[i].demo} imgLinks = {this.props.listEntries[i].imgLinks} description = {this.props.listEntries[i].description} style = {currStyle} mobile = {this.props.mobile} orientation = {this.props.orientation} /></li>)
         }
         return (
             <div id = "projectMain">

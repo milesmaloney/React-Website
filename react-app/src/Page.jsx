@@ -34,8 +34,9 @@ export default class Page extends React.Component {
     */
     constructor(props) {
         super(props);
-        this.state = {pageType: this.props.pageType, orientation: 'portrait'};
+        this.state = {pageType: this.props.pageType, dimensions: `${document.querySelector('#width')}x${document.querySelector('#height')}`};
         this.changePageType = this.changePageType.bind(this);
+        this.intervalIdCollection = [];
     }
 
     /*
@@ -46,34 +47,44 @@ export default class Page extends React.Component {
         Content; renders the content to the DOM within the web browser
     */
     render() {
+        var screenOrientation = this.getScreenOrientation();
         //Initializes the Sidebar content; any additions/changes to the Sidebar should happen here
         var sidebarContent = [
-            <a href = "#home" onClick = {() => this.changePageType('home')}><h3 title = "Return to home page">Home</h3></a>,
-            <a href = "https://www.linkedin.com/in/miles-maloney-0783051b9/" target = "_blank" rel = "noreferrer" title = "View Miles's LinkedIn profile">LinkedIn</a>,
-            <a href = "https://github.com/milesmaloney" target = "_blank" rel = "noreferrer" title = "View Miles's Github profile">Github</a>,
-            <a href = "#projects" onClick = {() => this.changePageType('projects')}><h3 title = "Learn about Miles's projects">Projects</h3></a>,
-            <a href = "#aboutme" onClick = {() => this.changePageType('about me')}><h3 title = "Learn about Miles's background">About Me</h3></a>
+            <a style = {{fontSize: `${this.props.mobile & screenOrientation === 'portrait' ? '4vw' : '3vw'}`}} href = "#home" onClick = {() => this.changePageType('home')}><h3 style = {{fontSize: `${this.props.mobile & screenOrientation === 'portrait' ? '4vw' : '3vw'}`}} title = "Return to home page">Home</h3></a>,
+            <a style = {{fontSize: `${this.props.mobile & screenOrientation === 'portrait' ? '4vw' : '3vw'}`}} href = "https://www.linkedin.com/in/miles-maloney-0783051b9/" target = "_blank" rel = "noreferrer" title = "View Miles's LinkedIn profile">LinkedIn</a>,
+            <a style = {{fontSize: `${this.props.mobile & screenOrientation === 'portrait' ? '4vw' : '3vw'}`}} href = "https://github.com/milesmaloney" target = "_blank" rel = "noreferrer" title = "View Miles's Github profile">Github</a>,
+            <a style = {{fontSize: `${this.props.mobile & screenOrientation === 'portrait' ? '4vw' : '3vw'}`}} href = "#projects" onClick = {() => this.changePageType('projects')}><h3 style = {{fontSize: `${this.props.mobile & screenOrientation === 'portrait' ? '4vw' : '3vw'}`}} title = "Learn about Miles's projects">Projects</h3></a>,
+            <a style = {{fontSize: `${this.props.mobile & screenOrientation === 'portrait' ? '4vw' : '3vw'}`}} href = "#aboutme" onClick = {() => this.changePageType('about me')}><h3 style = {{fontSize: `${this.props.mobile & screenOrientation === 'portrait' ? '4vw' : '3vw'}`}} title = "Learn about Miles's background">About Me</h3></a>
         ];
         //Renders the content for the home page
         if(this.state.pageType === 'home') {
-            return this.props.mobile ? this.getHomePage(sidebarContent, true) : this.getHomePage(sidebarContent);
+            return this.props.mobile ? this.getHomePage(sidebarContent, screenOrientation, true) : this.getHomePage(sidebarContent, screenOrientation);
         }
         //Renders the content for the about me page
         else if(this.state.pageType === 'about me') {
-            return this.props.mobile ? this.getAboutMePage(sidebarContent, true) : this.getAboutMePage(sidebarContent);
+            return this.props.mobile ? this.getAboutMePage(sidebarContent, screenOrientation, true) : this.getAboutMePage(sidebarContent, screenOrientation);
         }
         //Renders the content for the projects page
         else if(this.state.pageType === 'projects') {
-            return this.props.mobile ? this.getProjectsPage(sidebarContent, true) : this.getProjectsPage(sidebarContent);
+            return this.props.mobile ? this.getProjectsPage(sidebarContent, screenOrientation, true) : this.getProjectsPage(sidebarContent, screenOrientation);
         }
     }
 
     componentDidMount() {
-        window.addEventListener('orientationchange', this.setOrientation());
+        this.intervalIdCollection.push(setInterval(() => {
+            if(this.state.dimensions !== `${window.innerWidth}x${window.innerHeight}`) {
+                this.setState({dimensions: `${window.innerWidth}x${window.innerHeight}`});
+            }
+        }, 500));
     }
 
+    componentWillUnmount() {
+        for(var i = 0; i < this.intervalIdCollection.length; i++) {
+            clearInterval(this.intervalIdCollection[i]);
+        }
+    }
 
-    getHomePage(sidebarContent, mobile = false) {
+    getHomePage(sidebarContent, screenOrientation, mobile = false) {
         //Initializes the array of image links for the image scroller to iterate through
         var images = [img0,img1,img2,img3,img4,img5];
         var mainStyle = {};
@@ -82,9 +93,9 @@ export default class Page extends React.Component {
             mainStyle = {left: '0%', top: '10%', width: '100%', height: '80%'};
             return (
                 <div id = "page">
-                    <Header divs = {[1,1,0]} content = {[<LocalClock fontSize = '3vw'/>, <h1 onClick = {() => this.changePageType('about me')}>Miles Maloney</h1>]} style = {headerStyle}/>
+                    <Header divs = {[1,1,0]} content = {[<LocalClock fontSize = '3vw'/>, <h1 style = {{fontSize: `${mobile & screenOrientation === 'portrait' ? '10.5vw' : '6vw'}`}} onClick = {() => this.changePageType('about me')}>Miles Maloney</h1>]} style = {headerStyle}/>
                     <div id = "main" style = {mainStyle}>
-                        <ImageScroller shuffle = {0} images = {images} bgSrc = {'https://images.pexels.com/photos/956981/milky-way-starry-sky-night-sky-star-956981.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260'}/>
+                        <ImageScroller shuffle = {0} images = {images} bgSrc = {'https://images.pexels.com/photos/956981/milky-way-starry-sky-night-sky-star-956981.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260'} mobile = {true} orientation = {screenOrientation}/>
                     </div>
                     <Footer divs = {[0,0,1]} content = {[sidebarContent]}/>
                 </div>
@@ -106,27 +117,28 @@ export default class Page extends React.Component {
     }
 
 
-    getAboutMePage(sidebarContent, mobile = false) {
+    getAboutMePage(sidebarContent, screenOrientation, mobile = false) {
         var mainStyle = {}
         var headerStyle = {left: '0%', top: '0%', width: '100%', height: '10%'};
         //Initializes the content for the about me section; any additions/changes to the About Me page should happen here
-        var pStyle = this.props.mobile ? {fontSize: '4vw'} : {};
+        var pStyle = this.props.mobile ? {fontSize: `${screenOrientation === 'portrait' ? '4vw' : '2vw'}`} : {};
         var aboutMeContent = [
-            <p style = {pStyle}>{'\t'}Hello! My name is Miles Maloney, and I am a recent graduate (May 2021) of the B.S. Computer Science program at University of San Diego with a major in Computer Science and a minor in Theatre Arts. This website is a hub for you to find everything you might want to learn about my background as a software engineer. You can click the embedded links or the links in the sidebar to view my {<a href = "https://www.linkedin.com/in/miles-maloney-0783051b9/" target = "_blank" rel = "noreferrer" title = "View Miles's LinkedIn profile">LinkedIn</a>} and {<a href = "https://github.com/milesmaloney" target = "_blank" rel = "noreferrer" title = "View Miles's Github profile">Github</a>} profiles as well as visit the {<a href = "#projects" onClick = {() => this.changePageType('projects')} title = "Learn about Miles's projects">projects</a>} page to check out some of the projects I have worked on. I hope you have a nice day!</p>
+            <p style = {pStyle} key = "aboutMeContent">{'\t'}Hello! My name is Miles Maloney, and I am a recent graduate (May 2021) of the B.S. Computer Science program at University of San Diego with a major in Computer Science and a minor in Theatre Arts. This website is a hub for you to find everything you might want to learn about my background as a software engineer. You can click the embedded links or the links in the sidebar to view my {<a href = "https://www.linkedin.com/in/miles-maloney-0783051b9/" target = "_blank" rel = "noreferrer" title = "View Miles's LinkedIn profile">LinkedIn</a>} and {<a href = "https://github.com/milesmaloney" target = "_blank" rel = "noreferrer" title = "View Miles's Github profile">Github</a>} profiles as well as visit the {<a href = "#projects" onClick = {() => this.changePageType('projects')} title = "Learn about Miles's projects">projects</a>} page to check out some of the projects I have worked on. I hope you have a nice day!</p>
         ];
         var headerRightContent = [
             <div id = "images">
-                <div style = {{right: '0%', width: '35%', backgroundImage: `url(${img6})`, backgroundSize: 'cover'}}></div>
-                <div style = {{right: '35%', width: '25%', backgroundImage: 'url(https://www.sandiego.edu/assets/global/images/logos/usd-logo-stacked-inverse.png)', backgroundSize: 'contain'}}></div>
+                <div style = {{right: '0%', width: `${mobile & screenOrientation === 'portrait'  ? '50%' : '35%'}`, backgroundImage: `url(${img6})`, backgroundSize: 'cover'}}></div>
+                <div style = {{right: `${mobile & screenOrientation === 'portrait'  ? '50%' : '35%'}`, width: `${mobile ? '35%' : '25%'}`, backgroundImage: 'url(https://www.sandiego.edu/assets/global/images/logos/usd-logo-stacked-inverse.png)', backgroundSize: 'contain'}}></div>
             </div>
         ];
         if(this.props.mobile) {
             mainStyle = {left: '0%', top: '10%', height: '80%', width: '100%'};
+            var aboutMeStyle = {height: '50%', width: '90%'};
             return (
                 <div id = "page">
-                    <Header divs = {[1,1,1]} content = {[<LocalClock fontSize = '3vw'/>, <h1 style = {{fontSize: '5.5vw'}} onClick = {() => this.changePageType('about me')}>Miles Maloney</h1>, headerRightContent[0]]} style = {headerStyle}/>
+                    <Header divs = {[1,1,1]} content = {[<LocalClock fontSize = '3vw'/>, <h1 style = {{fontSize: `${mobile & screenOrientation === 'portrait' ? '8vw' : '5.5vw'}`}} onClick = {() => this.changePageType('about me')}>Miles Maloney</h1>, headerRightContent[0]]} style = {headerStyle}/>
                     <div id = "main" style = {mainStyle}>
-                        <div id = "aboutMe">
+                        <div id = "aboutMe" style = {aboutMeStyle}>
                             {aboutMeContent}
                         </div>
                     </div>
@@ -152,22 +164,22 @@ export default class Page extends React.Component {
     }
 
 
-    getProjectsPage(sidebarContent, mobile = false) {
+    getProjectsPage(sidebarContent, screenOrientation, mobile = false) {
         var mainStyle = {};
         //Initializes the project list entries; any additions/changes to ProjectMain should happen here
         var projectList = [
-            {title: 'Cubic Voice AI', srcLink: 'https://github.com/milesmaloney/virtual-ticket-agent', demo: <iframe width="100%" height="98%" src="https://www.youtube.com/embed/_1iAEM2Z0rE" title="Cubic Voice AI Demo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>, imgLinks: ['https://mycroft.ai/wp-content/uploads/2018/01/Mycroft-Logo-Square-Web-thumb.png', 'https://www.sandiego.edu/assets/global/images/logos/usd-logo-stacked-inverse.png', 'https://www.servicenow.com/content/dam/servicenow/images/customers-asset/details/logo/logo-cubic-transportation.png.imgw.720.720.jpg'], description: '\tIn this industry-sponsored project, three fellow students from University of San Diego and I created a conversational ticket agent using natural language processing engine Mycroft AI. This virtual ticket agent was built in Python on Raspberry Pi hardware, and used SQLite3 for database purposes. It has the functionalities of creating an account, buying a pass, routing you to your destination via transit, and checking your account balance.'},
-            {title: 'Turn-based Game', srcLink: 'https://github.com/milesmaloney/Game-Builder', demo: <h1>{'\t'}The demo for this project is currently unavailable due to an in-progress conversion from a command line interface to a React.js interface. In the meantime, you can run this project through the command line by following the instructions in the <a href = 'https://github.com/milesmaloney/Game-Builder' target = "_blank" rel = "noreferrer">source code repository</a>'s README file.</h1> , imgLinks: [allyWardenImg, allyWarriorImg, playerArcaneMageImg, enemySkeletonImg, enemyCultistImg], description: '\tIn this javascript project, I decided to create a game in order to further develop my programming skills and learn more about javascript. This turn-based game allows a user to select a name and class and battle alongside AI allies against AI enemies. I plan to include a demo when I am finished making the game compatible with React. In the meantime, you may view the source code by clicking the title and run the game from the command line if you\'d like.'},
-            {title: 'React Portfolio Website', srcLink: 'https://github.com/milesmaloney/React-Website', demo: <h1>{'\t'}You are currently browsing the React Portfolio Website project. To view its functionalities in more detail, you can explore the website and see what happens when you click or hover on each and every part of the site.</h1>, imgLinks: ['https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/1280px-React-icon.svg.png', siteImg] , description: '\tI created this React website in response to the surprising amount of demand for web developers in the current job market. I found that this project was very helpful in understanding front-end technologies and the challenges that come with them, as well as the surprising convenience of many features of React. You are currently viewing this exact website, which was built from scratch using React.js.'},
+            {title: 'Cubic Voice AI', srcLink: 'https://github.com/milesmaloney/virtual-ticket-agent', demo: <iframe width="100%" height="98%" src="https://www.youtube.com/embed/_1iAEM2Z0rE" title="Cubic Voice AI Demo" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" SameSite="none" Secure allowFullScreen></iframe>, imgLinks: ['https://mycroft.ai/wp-content/uploads/2018/01/Mycroft-Logo-Square-Web-thumb.png', 'https://www.sandiego.edu/assets/global/images/logos/usd-logo-stacked-inverse.png', 'https://www.servicenow.com/content/dam/servicenow/images/customers-asset/details/logo/logo-cubic-transportation.png.imgw.720.720.jpg'], description: '\tIn this industry-sponsored project, three fellow students from University of San Diego and I created a conversational ticket agent using natural language processing engine Mycroft AI. This virtual ticket agent was built in Python on Raspberry Pi hardware, and used SQLite3 for database purposes. It has the functionalities of creating an account, buying a pass, routing you to your destination via transit, and checking your account balance.'},
+            {title: 'Turn-based Game', srcLink: 'https://github.com/milesmaloney/Game-Builder', demo: <h1 style = {{fontSize: `${mobile ? `${screenOrientation === 'portrait' ? '5vw' : '2vw'}` : '4vw'}`}}>{'\t'}The demo for this project is currently unavailable due to an in-progress conversion from a command line interface to a React.js interface. In the meantime, you can run this project through the command line by following the instructions in the <a href = 'https://github.com/milesmaloney/Game-Builder' target = "_blank" rel = "noreferrer">source code repository</a>'s README file.</h1> , imgLinks: [allyWardenImg, allyWarriorImg, playerArcaneMageImg, enemySkeletonImg, enemyCultistImg], description: '\tIn this javascript project, I decided to create a game in order to further develop my programming skills and learn more about javascript. This turn-based game allows a user to select a name and class and battle alongside AI allies against AI enemies. I plan to include a demo when I am finished making the game compatible with React. In the meantime, you may view the source code by clicking the title and run the game from the command line if you\'d like.'},
+            {title: 'React Portfolio Website', srcLink: 'https://github.com/milesmaloney/React-Website', demo: <h1 style = {{fontSize: `${mobile ? `${screenOrientation === 'portrait' ? '5vw' : '2vw'}` : '4vw'}`}}>{'\t'}You are currently browsing the React Portfolio Website project. To view its functionalities in more detail, you can explore the website and see what happens when you click or hover on each and every part of the site.</h1>, imgLinks: ['https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/1280px-React-icon.svg.png', siteImg] , description: '\tI created this React website in response to the surprising amount of demand for web developers in the current job market. I found that this project was very helpful in understanding front-end technologies and the challenges that come with them, as well as the surprising convenience of many features of React. You are currently viewing this exact website, which was built from scratch using React.js.'},
         ];
         if(this.props.mobile) {
             mainStyle = {left: '0%', top: '10%', width: '100%', height: '80%', backgroundImage: 'url(https://prod-discovery.edx-cdn.org/media/programs/card_images/e0de6882-c5d1-43f3-99e0-17e386489dca-9c3bda2df48f.jpg)', backgroundSize: 'cover', backgroundPosition: 'left'};
             var headerStyle = {left: '0%', top: '0%', width: '100%', height: '10%'};
             return (
                 <div id = "page">
-                    <Header divs = {[0,0,1]} content = {[<h1>Projects</h1>]} style = {headerStyle}/>
+                    <Header divs = {[0,0,1]} content = {[<h1 style = {{fontSize: mobile ? `${screenOrientation === 'portrait' ? '13vw' : '6vw'}` : '8vw'}}>Projects</h1>]} style = {headerStyle}/>
                     <div id = "main" style = {mainStyle}>
-                        <ProjectMain listEntries = {projectList}/>
+                        <ProjectMain listEntries = {projectList} mobile = {true} orientation = {screenOrientation}/>
                     </div>
                     <Footer divs = {[0,0,1]} content = {[sidebarContent]}/>
                 </div>
@@ -210,7 +222,7 @@ export default class Page extends React.Component {
         }
     }
 
-    setOrientation() {
-        window.matchMedia("(orientation: portrait)").matches ? this.setState({orientation: 'portrait'}) : this.setState({orientation: 'landscape'});
+    getScreenOrientation() {
+        return window.screen.orientation.type === 'portrait-primary' || window.screen.orientation.type === 'portrait-secondary' ? 'portrait' : 'landscape';
     }
 }

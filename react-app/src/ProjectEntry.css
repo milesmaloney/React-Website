@@ -132,6 +132,10 @@
     color: white;
 }
 
+#title > h1 {
+    margin: 0%;
+}
+
 #title > h1 > a {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-size: 4vw;
