@@ -28,7 +28,6 @@
 
 #imageScrollerBackground > #loadingBg > h1 {
     pointer-events: none;
-    font-size: 10vw;
     color: rgba(256,256,256,0.6);
     z-index: 0;
     position: absolute;

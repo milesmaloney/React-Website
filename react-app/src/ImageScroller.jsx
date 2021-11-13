@@ -36,7 +36,7 @@ export default class ImageScroller extends React.Component {
         return (
             <div id = 'imageScrollerBackground' style = {{backgroundImage: `url(${this.props.bgSrc})`}}>
                 <div id = 'loadingBg'>
-                    <h1>Loading...</h1>
+                    <h1 style = {{fontSize: `${this.props.mobile ? '5vw' : '10vw'}`}}>Loading...</h1>
                 </div>
                 <div id = 'ImageScroller' style = {scrollerStyle} onClick = {this.changeImage} title = {"Continue to next image"}>
                     <div id = 'shuffleButton' onClick = {this.toggleShuffle}>
