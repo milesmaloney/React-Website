@@ -34,7 +34,7 @@ export default class ProjectEntry extends React.Component {
     render() {
         //Rendering the description screen
         if(!this.state.demoMode) {
-            var demoText = this.props.demo ? <h3 style = {{fontSize: `${this.props.mobile ? `${this.props.orientation === 'portrait' ? '3vw' : '1vw'}` : '2vw'}`}}>Click <a href = "#projects" rel = "noreferrer" onClick = {this.toggleDemoMode} title = {`View the demo for ${this.props.title}`}>here</a> to view a demo of the {this.props.title} project</h3> : null;
+            var demoText = this.props.demo ? <h3 style = {{fontSize: `${this.props.mobile ? `${this.props.orientation === 'portrait' ? '3vw' : '1vw'}` : '1.5vw'}`}}>Click <a href = "#projects" rel = "noreferrer" onClick = {this.toggleDemoMode} title = {`View the demo for ${this.props.title}`}>here</a> to view a demo of the {this.props.title} project</h3> : null;
             var descriptionStyle = {top: '20%', left: '0%', height: `${this.props.demo ? '70' : '80'}%`, width: '100%'};
             var demoTextStyle = this.props.demo ? {bottom: '0%', left: '0%', height: '10%', width: '100%'} : {height: '0%', width: '0%'};
             var images = [];
@@ -70,7 +70,7 @@ export default class ProjectEntry extends React.Component {
                             {this.props.demo}
                         </div>
                         <div id = "returnText">
-                            <h3 style = {{fontSize: `${this.props.mobile ? `${this.props.orientation === 'portrait' ? '3vw' : '1vw'}` : '2vw'}`}}>Click <a href = "#projects" rel = "noreferrer" onClick = {this.toggleDemoMode} title = {`Return to the description for ${this.props.title}`}>here</a> to return to the description of {this.props.title}</h3>
+                            <h3 style = {{fontSize: `${this.props.mobile ? `${this.props.orientation === 'portrait' ? '3vw' : '1vw'}` : '1.5vw'}`}}>Click <a href = "#projects" rel = "noreferrer" onClick = {this.toggleDemoMode} title = {`Return to the description for ${this.props.title}`}>here</a> to return to the description of {this.props.title}</h3>
                         </div>
                     </div>
                 </div>
