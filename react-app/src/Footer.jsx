@@ -106,7 +106,7 @@ export default class Footer extends React.Component {
 
         /*Else footer contains only a right div (This is handled by the base case) */
     
-        /*Base Case: Either no extra divs or only one (Would span the entire footer) */
+        /*Base Case: Either no extra divs or only one (Would span the entire footer) NOTE: divs prop should pass [0,0,1] */
         else {
             var footerElements = [];
             var widthPerElement = 100 / this.props.content[0].length;

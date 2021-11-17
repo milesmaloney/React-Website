@@ -1,11 +1,13 @@
+/*Defines base styling for the header*/
 #header {
+    top: 0%;
+    left: 0%;
+    height: 10%;
+    width: 100%;
     display: block;
     background-image: url('https://d2gg9evh47fn9z.cloudfront.net/800px_COLOURBOX4549221.jpg');
     background-size: cover;
     background-repeat: no-repeat;
-    height: 15%;
-    width: 100%;
-    top: 0%;
     position: fixed;
     text-align: center;
     z-index: 2;
@@ -13,19 +15,12 @@
     outline-color: rgb(196,196,256);
 }
 
-
+/*Defines header stylings for each section*/
 #headerLeft {
     background-color: rgba(0, 0, 60, 0.66);
-}
-
-#headerLeft > h2 {
     display: flex;
+    justify-content: center;
     align-items: center;
-    justify-content: left;
-    padding: 0px;
-    margin: 0px;
-    font-family:'Times New Roman', Times, serif;
-    color: orange;
 }
 
 
@@ -36,6 +31,7 @@
     justify-content: center;
 }
 
+/*Base styling for headerMid, which contains titles for pages*/
 #headerMid > h1 {
     padding: 0px;
     margin: 0px;
@@ -46,11 +42,14 @@
 
 
 #headerRight {
+    background-color: rgba(0, 0, 60, 0.66);
     display: flex;
     justify-content: center;
-    background-color: rgba(0, 0, 60, 0.66);
+    align-items: center;
 }
 
+
+/*Defines styling for the images div in the top-right corner of the about me page*/
 #headerRight > #images {
     height: 100%;
     width: 100%;

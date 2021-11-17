@@ -1,10 +1,7 @@
+/*Defines the base styling for the clock*/
 #clock {
     height: 100%;
     width: 100%;
-}
-
-#clock > h1 {
-    color: white;
 }
 
 #digits {
@@ -12,6 +9,7 @@
     width: 100%;
 }
 
+/*Defines the styling for each digit (hover rainbow)*/
 #digitOne {
     display: flex;
     align-items: center; 

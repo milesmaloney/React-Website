@@ -10,6 +10,9 @@ export default class ImageScroller extends React.Component {
     States:
         Shuffle: Maintains whether or not the ImageScroller is scrolling through images sequentially or randomly
         currentPicture: Maintains which picture is currently being displayed
+    Functions:
+        changeImage: changes the current image being displayed
+        toggleShuffle: Turns the shuffle value on/off
     */
     constructor(props) {
         super(props);
@@ -29,10 +32,8 @@ export default class ImageScroller extends React.Component {
         //Define the style variables for the style, slider, and shuffle button based on the shuffle state variable
         var scrollerStyle = {backgroundImage: `url(${this.props.images[this.state.currentPicture]})`, backgroundSize: `${this.props.mobile ? 'contain' : 'cover'}`};
         var sliderStyle = {backgroundColor: `${this.state.shuffle ? 'rgba(0,0,0,0.5)' : 'rgba(256,256,256,0.5)'}`, left: `${this.state.shuffle ? '80' : '0'}%`};
-        var shuffleDiv = null;
-        var shuffleTexture = {};
-        shuffleTexture = this.state.shuffle ? {backgroundColor: 'rgba(256,256,256,0.5)', color: 'rgba(0,0,0,0.5)'} : {backgroundColor: 'rgba(0,0,0,0.5)', color: 'rgba(256, 256, 256, 0.5)'};
-        shuffleDiv = this.state.shuffle ? <div id = "shuffleTexture" style = {shuffleTexture} title = "Turn off shuffle"><h2>ON</h2></div> : <div id = "shuffleTexture" style = {shuffleTexture} title = "Turn on shuffle"><h1>OFF</h1></div>;
+        var shuffleTexture = this.state.shuffle ? {backgroundColor: 'rgba(256,256,256,0.5)', color: 'rgba(0,0,0,0.5)'} : {backgroundColor: 'rgba(0,0,0,0.5)', color: 'rgba(256, 256, 256, 0.5)'};
+        var shuffleDiv = this.state.shuffle ? <div id = "shuffleTexture" style = {shuffleTexture} title = "Turn off shuffle"><h2>ON</h2></div> : <div id = "shuffleTexture" style = {shuffleTexture} title = "Turn on shuffle"><h1>OFF</h1></div>;
         return (
             <div id = 'imageScrollerBackground' style = {{backgroundImage: `url(${this.props.bgSrc})`}}>
                 <div id = 'loadingBg'>
@@ -57,6 +58,7 @@ export default class ImageScroller extends React.Component {
         None; updates imageIntervalID for interval clearing upon unrendering the element
     */
     componentDidMount() {
+        //Creates a interval to change the image every 3 seconds
         this.imageIntervalID = setInterval(this.changeImage, 3000);
     }
 
@@ -80,10 +82,10 @@ export default class ImageScroller extends React.Component {
         None: Changes the currentPicture state to reflect the new image we want to display
     */
     changeImage() {
+        //Gets the next image (random b/w 0 and # of images if in shuffle) or restarts the scroller
         var newImage = this.state.shuffle ? Math.floor(Math.random() * this.props.images.length) : (this.state.currentPicture  === this.props.images.length - 1 ? 0 : this.state.currentPicture + 1);
-        //The first image exposes the loading screen while showing in landscape orientation, so I have decided to skip it in this scenario (add 1 to the picture index)
-        newImage += (newImage === 0 && this.props.mobile && this.props.orientation === 'landscape' ? 1 : 0);
         this.setState({ currentPicture: newImage});
+        //Resets the image change interval (necessary for onClick call)
         clearInterval(this.imageIntervalID);
         this.imageIntervalID = setInterval(this.changeImage, 3000);
     }

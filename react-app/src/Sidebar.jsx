@@ -6,11 +6,12 @@ import './Sidebar.css';
 export default class Sidebar extends React.Component {
     /*
     Props:
-        Content:
-            An array of content to be displayed in each SidebarEntry in format {title, srcLink, description}
+        Content: An array of content to be displayed in each SidebarEntry in format {title, srcLink, description}
     States:
-        None; This react component does not change dynamically, and simply uses the content prop passed to it to indicate content and 
+        None; This react component does not change dynamically, and uses the content prop passed to it to indicate content and 
         algrebraically decides formatting based on the length of the content prop
+    Values:
+        bgImages: An array of image objects containing a src url as well as height and width in order to size planets appropriately
     */
     constructor(props) {
         super(props);
@@ -23,15 +24,17 @@ export default class Sidebar extends React.Component {
     Parameters:
         None; Uses the content prop to indicate what to display and the length of the prop to indicate styling
     Returns:
-        Content; renders the content to the DOM within the web browser
+        Content: renders the content to the DOM within the web browser
     */
     render() {
         var listElements = [];
+        //Defines the height of each sidebar entry
         var pcntPerElement = 100 / this.props.content.length;
         //Gives a style to each element in such a way that each prop has an equal amount of space within the sidebar & the sidebar gets covered
         for(var i = 0; i < this.props.content.length; i++) {
-            var currStyle = {top: `${(0 + (pcntPerElement * i)).toString()}%`, left: '0%', height: `${pcntPerElement.toString()}%`, width: '100%', position: 'absolute'};
-            listElements.push(<li key = {i} style = {currStyle}><SidebarEntry content = {this.props.content[i]} bgStyle = {{top: `${Math.floor(Math.random() * (100 - this.bgImages[i].height))}%`, left: `${Math.floor(Math.random() * (100 - this.bgImages[i].width))}%`, height: `${String(this.bgImages[i].height)}%`, width: `${String(this.bgImages[i].width)}%`, backgroundImage: `url(${this.bgImages[i].src})`, backgroundSize: 'contain', backgroundPosition: 'center', backgroundRepeat: 'no-repeat', position: 'absolute'}}/></li>);
+            var currStyle = {top: `${(0 + (pcntPerElement * i))}%`, left: '0%', height: `${pcntPerElement}%`, width: '100%', position: 'absolute'};
+            //Creates a list element with a sidebarEntry with bgImage = (i + 3)rd planet and bgStyle = a random position within the sidebarEntry
+            listElements.push(<li key = {i} style = {currStyle}><SidebarEntry content = {this.props.content[i]} bgStyle = {{top: `${Math.floor(Math.random() * (100 - this.bgImages[i].height))}%`, left: `${Math.floor(Math.random() * (100 - this.bgImages[i].width))}%`, height: `${this.bgImages[i].height}%`, width: `${this.bgImages[i].width}%`, backgroundImage: `url(${this.bgImages[i].src})`, backgroundSize: 'contain', backgroundPosition: 'center', backgroundRepeat: 'no-repeat', position: 'absolute'}}/></li>);
         }
         return (
             <div id = "sidebar" style = {this.props.style}>

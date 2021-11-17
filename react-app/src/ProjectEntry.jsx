@@ -5,18 +5,15 @@ import './ProjectEntry.css';
 export default class ProjectEntry extends React.Component {
     /*
     Props:
-        Title:
-            The title of the project
-        srcLink:
-            A link to the source code of the project (usually a github repo)
-        Description:
-            A brief description of the project
-        Image:
-            An optional image to be added to the project entry
-        Demo:
-            An optional demo to be added to the project entry
+        Title: The title of the project
+        srcLink: A link to the source code of the project (usually a github repo)
+        Description: A brief description of the project
+        Image: An optional image to be added to the project entry
+        Demo: An optional demo to be added to the project entry
     States:
-        None: This component uses props to decide the content of the project and formats based on what optional content is present
+        demoMode: A boolean value denoting whether or not the ProjectEntry is in demo mode
+    Functions:
+        toggleDemoMode: This function will turn demoMode on/off by setting the demoMode state
     */
     constructor(props) {
         super(props);
@@ -34,9 +31,11 @@ export default class ProjectEntry extends React.Component {
     render() {
         //Rendering the description screen
         if(!this.state.demoMode) {
+            //Checks if a demo was defined in the props, and creates a prompt to switch to demo mode (or doesn't) accordingly
             var demoText = this.props.demo ? <h3 style = {{fontSize: `${this.props.mobile ? `${this.props.orientation === 'portrait' ? '3vw' : '1vw'}` : '1.5vw'}`}}>Click <a href = "#projects" rel = "noreferrer" onClick = {this.toggleDemoMode} title = {`View the demo for ${this.props.title}`}>here</a> to view a demo of the {this.props.title} project</h3> : null;
             var descriptionStyle = {top: '20%', left: '0%', height: `${this.props.demo ? '70' : '80'}%`, width: '100%'};
             var demoTextStyle = this.props.demo ? {bottom: '0%', left: '0%', height: '10%', width: '100%'} : {height: '0%', width: '0%'};
+            //Checks if images for the background of the project entry were defined, and creates their components (or doesn't) accordingly
             var images = [];
             if(this.props.imgLinks) {
                 var widthPerImage = 100 / this.props.imgLinks.length;
