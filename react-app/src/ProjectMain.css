@@ -1,9 +1,11 @@
+/*Define the base styling for the project main div*/
 #projectMain {
     position: absolute;
     height: 100%;
     width: 100%;
 }
 
+/*Defines format styling for the list elements in projectMain*/
 #projectMain > ul {
     position: absolute;
     margin: 0%;
@@ -14,6 +16,7 @@
     list-style-type: none;
 }
 
+/*Defines the styling for the GitHub redirect logo in the top-right corner*/
 #projectMain > a {
     top: 0%;
     right: 17px;
@@ -23,6 +26,7 @@
     position: fixed;
 }
 
+/*Adds the background for the GH redirect*/
 a > #ghicon {
     height: 100%;
     width: 100%;

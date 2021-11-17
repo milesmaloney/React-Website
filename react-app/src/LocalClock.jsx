@@ -4,7 +4,15 @@ import './LocalClock.css';
 
 /*The LocalClock React component creates a clock that will switch between local time and date*/
 export default class LocalClock extends React.Component {
-    /*constructor sets the initial states and props*/
+    /*
+    Props:
+        fontSize: defines the font size of the clock
+    States:
+        date: The current date/time
+        timeOrDate: Boolean value denoting whether the clock is showing time or date
+    Functions:
+        changeState: Changes the timeOrDate state
+    */
     constructor(props) {
         super(props);
         this.state = { date: new Date(), timeOrDate : 'time'};

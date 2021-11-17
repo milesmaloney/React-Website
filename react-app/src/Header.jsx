@@ -20,7 +20,7 @@ export default class Header extends React.Component {
     Parameters:
         None; Uses the divs prop to indicate format and the content prop to indicate what should be displayed
     Returns:
-        Content; renders the content to the DOM within the web browser
+        Content: renders the content to the DOM within the web browser
     */
     render() {
         //Initialize the style variables for the three possible divs
@@ -104,7 +104,7 @@ export default class Header extends React.Component {
         }
 
         /*Else header contains only a right div (This is handled by the base case) */
-        /*Base Case: Either no extra divs or only one (Would span the entire header) */
+        /*Base Case: Either no extra divs or only one (Would span the entire header) NOTE: divs prop should pass [0,0,1] */
         else {
             midStyle = {left: '0%', width: '100%', height: '100%', position: 'absolute'};
             return (

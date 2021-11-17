@@ -1,6 +1,6 @@
 import React from 'react';
-import './Page.css';
 //Layout imports
+import './Page.css';
 import Header from './Header.jsx';
 import Sidebar from './Sidebar.jsx';
 import Footer from './Footer.jsx';
@@ -22,7 +22,6 @@ import allyWarriorImg from './Assets/gameAssets/warrior.png';
 import enemySkeletonImg from './Assets/gameAssets/skeleton.png';
 import enemyCultistImg from './Assets/gameAssets/cultist.png';
 import playerArcaneMageImg from './Assets/gameAssets/pArcaneMage.png';
-//import cubicVoiceAIDemoVideo from './Assets/demoVideos/demoVideo.mp4';
 
 /*This react component displays a page based on the prop pageType, which specifies which page of the website is to be displayed*/
 export default class Page extends React.Component {
@@ -31,6 +30,9 @@ export default class Page extends React.Component {
         pageType: The type of page to be displayed (e.g. 'home')
     States:
         pageType: Maintains the pageType and manages page changes
+        dimensions: Maintains the dimensions of the screen to handle resize events ('resize' event listener wasn't firing properly)
+    Values:
+        intervalIdCollection: The collection of interval ID's to be cleared upon unmounting from the DOM
     */
     constructor(props) {
         super(props);
@@ -44,9 +46,10 @@ export default class Page extends React.Component {
     Parameters:
         None; Uses the pageType prop to indicate which page should be displayed
     Returns:
-        Content; renders the content to the DOM within the web browser
+        Content: renders the content to the DOM within the web browser
     */
     render() {
+        //Gets the orientation of the screen to be passed to the page functions
         var screenOrientation = this.getScreenOrientation();
         //Initializes the Sidebar content; any additions/changes to the Sidebar should happen here
         var sidebarContent = [
@@ -70,6 +73,13 @@ export default class Page extends React.Component {
         }
     }
 
+    /*
+    This function defines actions that should be taken once the component is mounted on the DOM
+    Parameters:
+        None; detects change in dimensions every 1/2 second and updates the state accordingly
+    Returns:
+        None; sets an interval to check for dimension changes
+    */
     componentDidMount() {
         this.intervalIdCollection.push(setInterval(() => {
             if(this.state.dimensions !== `${window.innerWidth}x${window.innerHeight}`) {
@@ -78,22 +88,38 @@ export default class Page extends React.Component {
         }, 500));
     }
 
+    /*
+    This function defines actions that should be taken when the component is unmounting from the DOM
+    Parameters:
+        None; clears the intervals defined in this.intervalIDCollection
+    Returns:
+        None; clears all pending intervals
+    */
     componentWillUnmount() {
         for(var i = 0; i < this.intervalIdCollection.length; i++) {
             clearInterval(this.intervalIdCollection[i]);
         }
     }
 
+    /*
+    This function gets the homepage elements based on the screen orientation and device
+    Parameters:
+        sidebarContent: The content to be used to navigate through the site
+        screenOrientation: A string denoting the current orientation of the screen at the time of the render() call
+        mobile (default: false): A boolean value denoting whether or not the user is on a mobile device
+    Returns:
+        Content: Returns the content of the home page
+    */
     getHomePage(sidebarContent, screenOrientation, mobile = false) {
         //Initializes the array of image links for the image scroller to iterate through
         var images = [img0,img1,img2,img3,img4,img5];
         var mainStyle = {};
-        var headerStyle = {left: '0%', top: '0%', width: '100%', height: '10%'};
+        //Mobile site contains a footer instead of a sidebar
         if(this.props.mobile) {
             mainStyle = {left: '0%', top: '10%', width: '100%', height: '80%'};
             return (
                 <div id = "page">
-                    <Header divs = {[1,1,0]} content = {[<LocalClock fontSize = '3vw'/>, <h1 style = {{fontSize: `${mobile & screenOrientation === 'portrait' ? '9.5vw' : '5vw'}`}} onClick = {() => this.changePageType('about me')}>Miles Maloney</h1>]} style = {headerStyle}/>
+                    <Header divs = {[1,1,0]} content = {[<LocalClock fontSize = '3vw'/>, <h1 style = {{fontSize: `${mobile & screenOrientation === 'portrait' ? '9.5vw' : '5vw'}`}} onClick = {() => this.changePageType('about me')}>Miles Maloney</h1>]}/>
                     <div id = "main" style = {mainStyle}>
                         <ImageScroller shuffle = {0} images = {images} bgSrc = {'https://images.pexels.com/photos/956981/milky-way-starry-sky-night-sky-star-956981.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260'} mobile = {true} orientation = {screenOrientation}/>
                     </div>
@@ -106,7 +132,7 @@ export default class Page extends React.Component {
             var sidebarStyle = {left: '0%', top: '10%', width: '20%', height: '90%', borderRight: '5px groove rgba(0,0,0,1)'};
             return (
                 <div id = "page">
-                    <Header divs = {[1,1,0]} content = {[<LocalClock fontSize = '3vw'/>, <h1 style = {{fontSize: '6vw'}} onClick = {() => this.changePageType('about me')}>Miles Maloney</h1>]} style = {headerStyle}/>
+                    <Header divs = {[1,1,0]} content = {[<LocalClock fontSize = '3vw'/>, <h1 style = {{fontSize: '6vw'}} onClick = {() => this.changePageType('about me')}>Miles Maloney</h1>]}/>
                     <Sidebar content = {sidebarContent} style = {sidebarStyle}/>
                     <div id = "main" style = {mainStyle}>
                         <ImageScroller shuffle = {0} images = {images} bgSrc = {'https://images.pexels.com/photos/956981/milky-way-starry-sky-night-sky-star-956981.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260'}/>
@@ -116,27 +142,37 @@ export default class Page extends React.Component {
         }
     }
 
-
+    /*
+    This function gets the homepage elements based on the screen orientation and device
+    Parameters:
+        sidebarContent: The content to be used to navigate through the site
+        screenOrientation: A string denoting the current orientation of the screen at the time of the render() call
+        mobile (default: false): A boolean value denoting whether or not the user is on a mobile device
+    Returns:
+        Content: Returns the content of the about me page
+    */
     getAboutMePage(sidebarContent, screenOrientation, mobile = false) {
-        var mainStyle = {}
-        var headerStyle = {left: '0%', top: '0%', width: '100%', height: '10%'};
-        //Initializes the content for the about me section; any additions/changes to the About Me page should happen here
+        var mainStyle = {};
+        //Changes the paragraph style for mobile or retains font-size for computer
         var pStyle = this.props.mobile ? {fontSize: `${screenOrientation === 'portrait' ? '3.5vw' : '1vw'}`} : {};
+        //Initializes the content for the about me section; any additions/changes to the About Me page should happen here
         var aboutMeContent = [
             <p style = {pStyle} key = "aboutMeContent">{'\t'}Hello! My name is Miles Maloney, and I am a recent graduate (May 2021) of the B.S. Computer Science program at University of San Diego with a major in Computer Science and a minor in Theatre Arts. This website is a hub for you to find everything you might want to learn about my background as a software engineer. You can click the embedded links or the links in the sidebar to view my {<a href = "https://www.linkedin.com/in/miles-maloney-0783051b9/" target = "_blank" rel = "noreferrer" title = "View Miles's LinkedIn profile">LinkedIn</a>} and {<a href = "https://github.com/milesmaloney" target = "_blank" rel = "noreferrer" title = "View Miles's Github profile">Github</a>} profiles as well as visit the {<a href = "#projects" onClick = {() => this.changePageType('projects')} title = "Learn about Miles's projects">projects</a>} page to check out some of the projects I have worked on. I hope you have a nice day!</p>
         ];
+        //Initializes images to be displayed in the top-right corner of the page
         var headerRightContent = [
             <div id = "images">
                 <div style = {{right: '0%', width: `${mobile & screenOrientation === 'portrait'  ? '50%' : '35%'}`, backgroundImage: `url(${img6})`, backgroundSize: 'cover'}}></div>
                 <div style = {{right: `${mobile & screenOrientation === 'portrait'  ? '50%' : '35%'}`, width: `${mobile ? '35%' : '25%'}`, backgroundImage: 'url(https://www.sandiego.edu/assets/global/images/logos/usd-logo-stacked-inverse.png)', backgroundSize: 'contain'}}></div>
             </div>
         ];
+        //Mobile site contains a footer instead of a sidebar
         if(this.props.mobile) {
             mainStyle = {left: '0%', top: '10%', height: '80%', width: '100%'};
             var aboutMeStyle = {height: '50%', width: '90%'};
             return (
                 <div id = "page">
-                    <Header divs = {[1,1,1]} content = {[<LocalClock fontSize = '3vw'/>, <h1 style = {{fontSize: `${mobile & screenOrientation === 'portrait' ? '8vw' : '5vw'}`}} onClick = {() => this.changePageType('about me')}>Miles Maloney</h1>, headerRightContent[0]]} style = {headerStyle}/>
+                    <Header divs = {[1,1,1]} content = {[<LocalClock fontSize = '3vw'/>, <h1 style = {{fontSize: `${mobile & screenOrientation === 'portrait' ? '8vw' : '5vw'}`}} onClick = {() => this.changePageType('about me')}>Miles Maloney</h1>, headerRightContent[0]]}/>
                     <div id = "main" style = {mainStyle}>
                         <div id = "aboutMe" style = {aboutMeStyle}>
                             {aboutMeContent}
@@ -151,7 +187,7 @@ export default class Page extends React.Component {
             var sidebarStyle = {left: '0%', top: '10%', width: '20%', height: '90%'};
             return (
                 <div id = "page">
-                    <Header divs = {[1,1,1]} content = {[<LocalClock fontSize = '3vw'/>, <h1 style = {{fontSize: '5.5vw'}} onClick = {() => this.changePageType('about me')}>Miles Maloney</h1>, headerRightContent[0]]} style = {headerStyle}/>
+                    <Header divs = {[1,1,1]} content = {[<LocalClock fontSize = '3vw'/>, <h1 style = {{fontSize: '5.5vw'}} onClick = {() => this.changePageType('about me')}>Miles Maloney</h1>, headerRightContent[0]]}/>
                     <Sidebar content = {sidebarContent} style = {sidebarStyle}/>
                     <div id = "main" style = {mainStyle}>
                         <div id = "aboutMe">
@@ -163,7 +199,15 @@ export default class Page extends React.Component {
         }
     }
 
-
+    /*
+    This function gets the homepage elements based on the screen orientation and device
+    Parameters:
+        sidebarContent: The content to be used to navigate through the site
+        screenOrientation: A string denoting the current orientation of the screen at the time of the render() call
+        mobile (default: false): A boolean value denoting whether or not the user is on a mobile device
+    Returns:
+        Content: Returns the content of the projects page
+    */
     getProjectsPage(sidebarContent, screenOrientation, mobile = false) {
         var mainStyle = {};
         //Initializes the project list entries; any additions/changes to ProjectMain should happen here
@@ -172,12 +216,12 @@ export default class Page extends React.Component {
             {title: 'Turn-based Game', srcLink: 'https://github.com/milesmaloney/Game-Builder', demo: <h1 style = {{fontSize: `${mobile ? `${screenOrientation === 'portrait' ? '5vw' : '1.5vw'}` : '2vw'}`}}>{'\t'}The demo for this project is currently unavailable due to an in-progress conversion from a command line interface to a React.js interface. In the meantime, you can run this project through the command line by following the instructions in the <a href = 'https://github.com/milesmaloney/Game-Builder' target = "_blank" rel = "noreferrer">source code repository</a>'s README file.</h1> , imgLinks: [allyWardenImg, allyWarriorImg, playerArcaneMageImg, enemySkeletonImg, enemyCultistImg], description: '\tIn this javascript project, I decided to create a game in order to further develop my programming skills and learn more about javascript. This turn-based game allows a user to select a name and class and battle alongside AI allies against AI enemies. I plan to include a demo when I am finished making the game compatible with React. In the meantime, you may view the source code by clicking the title and run the game from the command line if you\'d like.'},
             {title: 'React Portfolio Website', srcLink: 'https://github.com/milesmaloney/React-Website', demo: <h1 style = {{fontSize: `${mobile ? `${screenOrientation === 'portrait' ? '5vw' : '1.5vw'}` : '2vw'}`}}>{'\t'}You are currently browsing the React Portfolio Website project. To view its functionalities in more detail, you can explore the website and see what happens when you click or hover on each and every part of the site.</h1>, imgLinks: ['https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/1280px-React-icon.svg.png', siteImg] , description: '\tI created this React website in response to the surprising amount of demand for web developers in the current job market. I found that this project was very helpful in understanding front-end technologies and the challenges that come with them, as well as the surprising convenience of many features of React. You are currently viewing this exact website, which was built from scratch using React.js.'},
         ];
+        //Mobile page contains a footer instead of header, and passes the mobile and orientation props to ProjectMain for further styling changes
         if(this.props.mobile) {
             mainStyle = {left: '0%', top: '10%', width: '100%', height: '80%', backgroundImage: 'url(https://prod-discovery.edx-cdn.org/media/programs/card_images/e0de6882-c5d1-43f3-99e0-17e386489dca-9c3bda2df48f.jpg)', backgroundSize: 'cover', backgroundPosition: 'left'};
-            var headerStyle = {left: '0%', top: '0%', width: '100%', height: '10%'};
             return (
                 <div id = "page">
-                    <Header divs = {[0,0,1]} content = {[<h1 style = {{fontSize: mobile ? `${screenOrientation === 'portrait' ? '13vw' : '6vw'}` : '8vw'}}>Projects</h1>]} style = {headerStyle}/>
+                    <Header divs = {[0,0,1]} content = {[<h1 style = {{fontSize: mobile ? `${screenOrientation === 'portrait' ? '13vw' : '6vw'}` : '8vw'}}>Projects</h1>]}/>
                     <div id = "main" style = {mainStyle}>
                         <ProjectMain listEntries = {projectList} mobile = {true} orientation = {screenOrientation}/>
                     </div>
@@ -222,6 +266,13 @@ export default class Page extends React.Component {
         }
     }
 
+    /*
+    This function gets the current screen orientation
+    Parameters:
+        None; uses the window object's properties innerWidth and innerHeight
+    Returns:
+        String: 'portrait' if the height exceeds the width or 'landscape' if the width exceeds the height
+    */
     getScreenOrientation() {
         return window.innerHeight > window.innerWidth ? 'portrait' : 'landscape';
     }

@@ -5,11 +5,9 @@ import './SidebarEntry.css';
 export default class SidebarEntry extends React.Component {
     /*
     Props:
-        Content:
-            The content to be displayed in the SidebarEntry objects (formatted as an array of list objects)
+        Content: The content to be displayed in the SidebarEntry objects (formatted as an array of list objects)
     States:
-        None:
-            This react component does not change dynamically
+        None; This react component does not change dynamically
     */
     constructor(props) {
         super(props);
@@ -21,7 +19,7 @@ export default class SidebarEntry extends React.Component {
     Parameters:
         None; Uses the content prop to indicate what should be displayed
     Returns:
-        Content; renders the content to the DOM within the web browser
+        Content: renders the content to the DOM within the web browser
     */
     render() {
         return (

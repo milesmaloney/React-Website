@@ -1,3 +1,4 @@
+/*Defines the base styling for the ImageScroller component*/
 #ImageScroller {
     height: 100%;
     width: 100%;
@@ -7,6 +8,7 @@
     position: absolute;
 }
 
+/*Defines all static stylings for the images*/
 #imageScrollerBackground {
     height: 100%;
     width: 100%;
@@ -14,13 +16,14 @@
     background-position: center;
 }
 
+/*Defines the styling for the loading background*/
 #imageScrollerBackground > #loadingBg {
     height: 100%;
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
-    pointer-events: none;
+    pointer-events: none; /*Fixes an issue with pointer-events breaking with layered divs*/
     background-color: rgba(0,0,0,0.5);
     z-index: 0;
     position: absolute;
@@ -33,6 +36,7 @@
     position: absolute;
 }
 
+/*Defines the styling for the shuffle button*/
 #shuffleButton {
     height: 5%;
     width: 5%;

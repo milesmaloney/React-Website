@@ -7,8 +7,9 @@ import './ProjectMain.css';
 export default class ProjectMain extends React.Component {
     /*
     Props:
-        List Entries:
-            An array of list entries for the ProjectMain component to use to fill in ProjectEntry objects within the ProjectMain component
+        List Entries: An array of list entries for the ProjectMain component to use to fill in ProjectEntry objects within the ProjectMain component
+        Mobile: A boolean value denoting whether or not the device is a mobile device to be passed to ProjectEntries
+        Orientation: A string value ('portrait' or 'landscape') denoting the orientation of the device to be passed to ProjectEntries
     States:
         None; This component uses the listEntries prop to determine format and content and does not change dynamically
     */
@@ -25,11 +26,10 @@ export default class ProjectMain extends React.Component {
         Content; renders the content to the DOM within the web browser
     */
     render() {
-        var heightPerEntry =  50;
         var listEntries = [];
-        //Populates listEntries with corresponding list elements with partitioned styles for each entry
+        //Populates listEntries with corresponding list elements with partitioned styles for each entry (Height is 50% per entry)
         for(var i = 0; i < this.props.listEntries.length; i++) {
-            var currStyle = {top: `${0 + (heightPerEntry * i)}%`, left: '0%', height: `${heightPerEntry}%`, width: '100%', position: 'absolute'};
+            var currStyle = {top: `${0 + (50 * i)}%`, left: '0%', height: '50%', width: '100%', position: 'absolute'};
             listEntries.push(<li key = {i}><ProjectEntry title = {this.props.listEntries[i].title} srcLink = {this.props.listEntries[i].srcLink} demo = {this.props.listEntries[i].demo} imgLinks = {this.props.listEntries[i].imgLinks} description = {this.props.listEntries[i].description} style = {currStyle} mobile = {this.props.mobile} orientation = {this.props.orientation} /></li>)
         }
         return (

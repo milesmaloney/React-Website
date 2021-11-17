@@ -1,3 +1,4 @@
+/*Defines the base styling for a projectEntry*/
 #projectEntry {
     overflow: auto;
     background-color:rgba(0, 0, 0, 0.5);
@@ -7,10 +8,12 @@
     transition: background-color 1s;
 }
 
+/*Lightens the projectEntry on hover*/
 #projectEntry:hover {
     background-color: rgba(0,0,0,0);
 }
 
+/*Defines the styling for the images in the projectEntries*/
 #projectEntry > #images {
     top: 0%;
     left: 0%;
@@ -28,6 +31,7 @@
     position: absolute;
 }
 
+/*Defines the styling for all of the text in the projectEntries*/
 #projectEntry > #title {
     background-color: rgba(64, 0, 128, 0.5);
     display: flex;
@@ -76,6 +80,7 @@
     padding: 0%;
 }
 
+/*Defines the styling for a projectEntry in demo mode*/
 #projectEntry > #demoEntry {
     height: 100%;
     width: 100%;
@@ -91,6 +96,41 @@
     position: absolute;
 }
 
+#title > h1 {
+    margin: 0%;
+}
+
+#title > h1 > a {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 4vw;
+    margin: 0%;
+}
+
+#title > h1 > a:link {
+    color: chartreuse;
+}
+
+#title > h1 > a:visited {
+    color: white;
+}
+
+
+#description > h3 {
+    margin: 0%;
+    padding: 0%;
+    font-size: 2vw;
+    color:azure;
+}
+
+#description > h3 > h3 > a:link {
+    color: chartreuse;
+}
+
+#description > h3 > h3 > a:visited {
+    color: white;
+}
+
+/*Defines the styling for any text in the demos*/
 #demo > h1 {
     background-color: rgba(0,0,0,0.5);
     color: azure;
@@ -129,39 +169,5 @@
 }
 
 #returnText > h3 > a:visited {
-    color: white;
-}
-
-#title > h1 {
-    margin: 0%;
-}
-
-#title > h1 > a {
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    font-size: 4vw;
-    margin: 0%;
-}
-
-#title > h1 > a:link {
-    color: chartreuse;
-}
-
-#title > h1 > a:visited {
-    color: white;
-}
-
-
-#description > h3 {
-    margin: 0%;
-    padding: 0%;
-    font-size: 2vw;
-    color:azure;
-}
-
-#description > h3 > h3 > a:link {
-    color: chartreuse;
-}
-
-#description > h3 > h3 > a:visited {
     color: white;
 }
