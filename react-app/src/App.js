@@ -10,7 +10,7 @@ function App() {
     </div>
   ) : (
     <div id = "App">
-      <Page pageType = 'home' mobile = {true}/>
+      <Page pageType = 'home' mobile = {false}/>
     </div>
   );
 }
